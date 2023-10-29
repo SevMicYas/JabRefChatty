@@ -35,15 +35,15 @@ Beschreibt, wie der Rest der Spezifikation aufgebaut ist, insbesondere, wie Kapi
 
 ### 2.1 Einbettung
 
-Beschreibt, wie das System in seine Umgebung eingebettet ist und wie die Software mit den umgebenden Komponenten und Systemen zusammenspielt. Dazu werden die Schnittstellen, Kommunikationsprotokolle etc. definiert.
+ChatGPT 3.5-Turbo soll mittels API in Jabref eingebaut werden. 
 
 ### 2.2 Funktionen
 
-Skizziert die wichtigsten Funktionen
+Die Nutzer greifen auf die Funktionalität von Chat-GPT via GUI zu. Es kann mittels eines Buttons ein Chat-window geöffnet werden, welches unterhaltsame gespräche mit ChatGPT ermöglicht. Beim hinzüfügen eines Artikels soll ChatGPT automatisch den Abstract in einem Satz zusammenfassen.
 
 ### 2.3 Benutzerprofile
 
-Charakterisiert die Benutzergruppen und die Voraussetzungen die diese jeweils mitbringen (Ausbildung, Know-how, Sprache)
+Alle Jabref Benutzer unabhänging der Erfahrungslevel.
 
 ### 2.4 Einschränkungen
 Dokumentiert Einschränkungen, die die Freiheit der Entwicklung reduzieren (Basis-Software, Ziel-Hardware, Gesetzliche Grundlagen, ...)
