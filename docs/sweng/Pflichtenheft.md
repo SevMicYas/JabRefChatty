@@ -80,42 +80,34 @@ Definieren Sie hier mindestens ein Abnahmekriterium
 
 ## Anhang A. Use-cases
 
-An dieser Stelle können detaillierte Use-cases angegeben werden
-![Diagram](../../slides/images/use-case.png)
-
 ### Use Case 1:
-* Name: *Name des Use-cases*
-* Akteure: *Akteur1, Akteur2, ...*
-* Vorbedingungen: *Was muss vor Beginn des Ablaufs gelten*
+* Name: Durchschnittlicher User
+* Akteure: Otto Normal (O.N.)
+* Vorbedingungen: Otto Normal benutzt JabRef. Er hat kein Interesse daran, ChatGPT zu nutzen, sondern will JabRef 'normal' benutzen. Er möchte jedoch nicht jedes Mal den kompletten Abstract lesen müssen, um eine Vorstellung vom Inhalt des Artikels zu kriegen, aber trotzdem etwas mehr Informationen dazu erhalten, um einen Kurzüberblick über die Thematik des Artikels zu erlangen.
 * Standardablauf
-    * Schritt 1
-    * Schritt 2
-* Nachbedingungen Erfolg: *Was muss nach dem Ende des erfolgreichen Ablaufs gelten*
-* Nachbedingung Sonderfall: *Was gilt nach dem Ende, wenn der Ablauf fehlgeschlagen ist*
+    * O.N. startet JabRef
+    * O.N. wählt einen Eintrag in seiner Bibliothek aus
+    * O.N. klickt auf das "Summary" Tab (neben "Abstract" Tab)
+    * O.N. klickt auf den "summarize" Button (unten links, beim "Change entry type" Button)
+* Nachbedingungen Erfolg: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
+* Nachbedingung Sonderfall 1a: Das Feld ist leer.
+* Nachbedingung Sonderfall 1b: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
 
 
 #### Sonderfall 1a: Ausnahme 1
-* Ablauf Sonderfall 1a
-    * Schritt 1
-    * Schritt 2
-
+Wenn der Artikel keinen Abstract hat; beziehungsweise ein Eintrag ohne Abstract hinzugefügt wurde, bleibt das Feld leer (Analog zum "Abstract" Feld).
 #### Sonderfall 1b: Ausnahme 2
-* Ablauf Sonderfall 1b
-    * Schritt 1
-    * Schritt 2
-
+Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das "Summary" Tab klickt, erscheint ebenfalls die Zusammenfassung.
 
 ### Use Case 2:
-* Name: *Name des Use-cases*
-* Akteure: *Akteur1, Akteur2, ...*
-* Vorbedingungen: *Was muss vor Beginn des Ablaufs gelten*
+* Name: ChatGPT User
+* Akteure: Chatty
+* Vorbedingungen: Chatty benutzt JabRef. Beim Browsen seiner Bibliothek fällt ihm eine Frage ein, die er gerne von ChatGPT beantwortet hätte. Dafür möchte er nicht auf seinen Internetbrowser wechseln, sondern das in JabRef integrierte ChatWindow nutzen.
 * Standardablauf
-    * Schritt 1
-    * Schritt 2
-* Nachbedingungen Erfolg: *Was muss nach dem Ende des erfolgreichen Ablaufs gelten*
-* Nachbedingung Sonderfall: *Was gilt nach dem Ende, wenn der Ablauf fehlgeschlagen ist*
-
-#### Sonderfall 2a: Ausnahme 1
-* Ablauf Sonderfall 1a
-    * Schritt 1
-    * Schritt 2
+    * Chatty startet JabRef
+    * Chatty fällt eine Frage ein und möchte diese von ChatGPT beantwortet kriegen.
+    * Chatty klickt auf den "ChatGPT" Button oben rechts und ein Fenster öffnet sich.
+    * Chatty schreibt seine Frage in das Fenster und drückt die "Enter"-Taste.
+    * Chatty erhält eine Antwort von ChatGPT im Fenster.
+* Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
+* Nachbedingung Sonderfall: - ?
