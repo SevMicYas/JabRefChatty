@@ -65,43 +65,41 @@ Benutzer müssen sich mit der Englischen Sprache umgehen können
 Ausserdem ist sie abhängig vom gegebenen Abstract der einzelnen Einträge
 
 ### 2.5 Annahmen und Abhängigkeiten
-???
+Abhängigkeiten: 
+* Java 19.0.2+7
+* ChatGPT 3.5-Turbo API
+
+Die vorliegende Erweiterung soll keine zusätzlichen Anforderungen an die Hardwarespezifikation erzeugen.
 
 
 ## 3. Einzelanforderungen
 
 Beschreibt die Anforderung i so genau, dass bei der Verwendung der Spezifikation (im Entwurf usw.) keine Rückfragen dazu notwendig sind.
 
-Identifizieren Sie jede Funktionale Anforderung mit einer Nummer, so dass diese Nachverfolgbar sind. Zusammengehörende Funktionale Anforderungen können durch geeignete Nummerierung angezeigt werden.
+Identifizieren Sie jede funktionale Anforderung mit einer Nummer, so dass diese Nachverfolgbar sind. Zusammengehörende Funktionale Anforderungen können durch geeignete Nummerierung angezeigt werden.
 
 Zur Spezifikation der Software sollen Sprachschablonen benutzt werden.
 
-* /F10/ Funktion 1 des Systems
-* /F11/ Weitere Detaillierung Funkion 1
-* /F20/ Funktion 2 des Systems
-
-
-Die Funktionalen Anforderungen sollen mithilfe von Use-cases erhoben werden. Die Use-cases sollen in Anhang A detailliert beschrieben werden.
+* /F10/ Tab rechts von "Abstract" mit dem Namen "Summary" das ein neues Feld in JabRef öffnet.
+* /F11/ Das Feld hat ein Text-feld in dem entweder nichts, oder ein einzelner Satz steht, der den Abstract zusammenfasst.
+* /F12/ Rechts im unteren Feld, oberhalb vom "Change entry type" ist ein Button namens "Summarize".
+* /F13/ Beim Betätigen des Buttons "summarize" wird der Abstract über die offizielle OpenAI API an ChatGPT geschickt, mit der Aufgabe den Abstract in einem Satz zusammenfassen. 
+* /F14/ Der Output des API-calls von /F13/ wird im Feld von /F11/ dargestellt.
+* /F20/ Oben rechts bei JabRef soll ein Button eingebettet werden mit der Aufschrift "Chatty".
+* /F21/ Beim Klicken auf diesen Knopf öffnet sich ein Chat Fenster mit einem Textfeld.
+* /F22/ Man kann im Textfeld schreiben und bei Klicken der "Enter"-Taste wird der Inhalt an ChatGPT geschickt.
+* /F23/ Es kommt eine Antwort von ChatGPT als Chat-Nachricht zurück.
 
 ## 4. Abnahmekriterien
 
-Beschreiben Sie hier, wie die Anforderungen bei der Abnahme auf ihre Realisierung überprüft werden können.
-
 Definieren Sie hier mindestens ein Abnahmekriterium
-* /A10/ Abnahmekriterium 1
-* /A20/ Abnahmekriterium 2
-
+* /A10/ Beim Klicken auf den "summarize" Button erscheint eine Zusammenfassung des Abstracts in einem Satz im "Summary" Tab.
+* /A20/ Beim Klicken auf den Button "Chatty", öffnet sich ein Chat-window, indem man mit ChatGPT kommunizieren kann.ß
 
 # Anhang
 
 ## Anhang A. Use-cases
 
-<<<<<<< HEAD
-An dieser Stelle können detaillierte Use-cases angegeben werden
-
-
-=======
->>>>>>> 73e8313b14f3cabd874cacecce2358ef57dbfbf5
 ### Use Case 1:
 * Name: Durchschnittlicher User
 * Akteure: Otto Normal (O.N.)
@@ -128,8 +126,7 @@ Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf
 * Standardablauf
     * Chatty startet JabRef
     * Chatty fällt eine Frage ein und möchte diese von ChatGPT beantwortet kriegen.
-    * Chatty klickt auf den "ChatGPT" Button oben rechts und ein Fenster öffnet sich.
+    * Chatty klickt auf den "Chatty" Button oben rechts und ein Fenster öffnet sich.
     * Chatty schreibt seine Frage in das Fenster und drückt die "Enter"-Taste.
     * Chatty erhält eine Antwort von ChatGPT im Fenster.
 * Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
-* Nachbedingung Sonderfall: - ?
