@@ -10,16 +10,25 @@ title : Woche 6
 
 ### 1.1 Zweck
 
-Beschreibt den Zweck und den Leserkreis der Spezifikation.
+JabRef kann den Abstract von Artikeln halten. Bei vielen Artikeln kann es schwierig werden, Übersicht zu behalten. Neu soll der Abstract in einem Satz zusammengefasst werden. 
+Da man sich einsam fühlen kann, während dem man mit JabRef arbeitet, soll eine Chat-option für unterhaltung sorgen. 
 
 ### 1.2 Einsatzbereich und Ziele
-Gibt an, wo die Software eingesetzt werden soll und welche wesentlichen Funktionen es haben wird. Wo sinnvoll, sollte auch definiert werden, was die Software nicht leisten wird.
 
-Beschreibt die mit der Software verfolgten Ziele.
+Die Modifikation richtet sich an JabRef-User, die mit vielen Einträgen arbeiten und die Übersicht schnell verlieren. Die Modifikation richtet sich auch an diejenigen, die mit ChatGPT schrei
+
+Neue Funktionen:
+
+* Abstracts werden automatisch in einem Satz zusammengefasst.
+* Integrierter zugang zu ChatGPT über ein Chat-Window.
 
 ### 1.3 Definitionen
 
-Dokumentiert alle verwendeten Fachbegriffe und Abkürzungen. Alternativ können Sie auch ein separates Glossar nutzen.
+| Begriff  	 | Bedeutung 	|
+|------------|-----------	|
+| API      	 |   Eine API ist eine Schnittstelle, die es unabhängigen Anwendungen ermöglicht, miteinander zu kommunizieren und Daten auszutauschen         	|
+| Abstract 	 |           	|
+| ChatGPT  	 |               |
 
 ### 1.4 Referenzierte Dokumente
 
@@ -29,7 +38,8 @@ Falls ein JabRef Issue bearbeitet wird, bitte diesen hier referenzieren und verl
 
 ### 1.5 Überblick
 
-Beschreibt, wie der Rest der Spezifikation aufgebaut ist, insbesondere, wie Kapitel 3 strukturiert ist.
+Im folgenden Kapitel 2 wird die Spezifikation und ihre Einbettung ausführlicher Beschrieben. In Kapitel 3 werden alle
+Anforderungen und die Erweiterung detailliert ausgeführt und in Kapitel 4 wird definiert was die Abnahmekriterien sind.
 
 ## 2. Allgemeine Beschreibung
 
@@ -81,7 +91,7 @@ Definieren Sie hier mindestens ein Abnahmekriterium
 ## Anhang A. Use-cases
 
 An dieser Stelle können detaillierte Use-cases angegeben werden
-![Diagram](../../slides/images/use-case.png)
+
 
 ### Use Case 1:
 * Name: *Name des Use-cases*
