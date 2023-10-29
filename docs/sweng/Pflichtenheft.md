@@ -27,8 +27,8 @@ Neue Funktionen:
 | Begriff  	 | Bedeutung 	|
 |------------|-----------	|
 | API      	 |   Eine API ist eine Schnittstelle, die es unabhängigen Anwendungen ermöglicht, miteinander zu kommunizieren und Daten auszutauschen         	|
-| Abstract 	 |           	|
-| ChatGPT  	 |               |
+| Abstract 	 |   Unter dem englischen Begriff Abstract versteht man eine prägnante Zusammenfassung bzw. Inhaltsangabe, einen Abriss ohne Interpretation und Wertung einer wissenschaftlichen Arbeit|
+| ChatGPT  	 |   ChatGPT ist ein Chatbot, der künstliche Intelligenz einsetzt, um mit Nutzern über textbasierte Nachrichten und Bilder zu kommunizieren         |
 
 ### 1.4 Referenzierte Dokumente
 
