@@ -39,17 +39,23 @@ ChatGPT 3.5-Turbo soll mittels API in Jabref eingebaut werden.
 
 ### 2.2 Funktionen
 
-Die Nutzer greifen auf die Funktionalität von Chat-GPT via GUI zu. Es kann mittels eines Buttons ein Chat-window geöffnet werden, welches unterhaltsame gespräche mit ChatGPT ermöglicht. Beim hinzüfügen eines Artikels soll ChatGPT automatisch den Abstract in einem Satz zusammenfassen.
+Die Nutzer greifen auf die Funktionalität von Chat-GPT via GUI zu. 
+Es kann mittels eines Buttons ein Chat-window geöffnet werden, welches unterhaltsame gespräche mit ChatGPT ermöglicht. 
+Beim hinzüfügen eines Artikels soll ChatGPT automatisch den Abstract in einem Satz zusammenfassen.
 
 ### 2.3 Benutzerprofile
 
-Alle Jabref Benutzer unabhänging der Erfahrungslevel.
+Alle Jabref Benutzer unabhänging vom Erfahrungslevel. 
+Benutzer müssen sich mit der Englischen Sprache umgehen können
 
 ### 2.4 Einschränkungen
-Dokumentiert Einschränkungen, die die Freiheit der Entwicklung reduzieren (Basis-Software, Ziel-Hardware, Gesetzliche Grundlagen, ...)
+ür die Entwicklung ist JDK 18 und usere Erweiterung wird auf Englisch sein.
+- Die Erweiterung soll keine zusätzlichen Anforderungen an die Hardwarespezifikation erzeugen.
+- Die Erweiterung ist abhängig von der verwendeten ChatGPT API und der aktuellen ChatGPT Version. 
+Ausserdem ist sie abhängig vom gegebenen Abstract der einzelnen Einträge
 
 ### 2.5 Annahmen und Abhängigkeiten
-Nennt explizit die Annahmen und externen Voraussetzungen, von denen bei der Spezifikation ausgegangen wurde.
+???
 
 
 ## 3. Einzelanforderungen
@@ -81,7 +87,7 @@ Definieren Sie hier mindestens ein Abnahmekriterium
 ## Anhang A. Use-cases
 
 An dieser Stelle können detaillierte Use-cases angegeben werden
-![Diagram](../../slides/images/use-case.png)
+
 
 ### Use Case 1:
 * Name: *Name des Use-cases*
