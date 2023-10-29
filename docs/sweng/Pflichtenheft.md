@@ -45,21 +45,27 @@ Anforderungen und die Erweiterung detailliert ausgeführt und in Kapitel 4 wird 
 
 ### 2.1 Einbettung
 
-Beschreibt, wie das System in seine Umgebung eingebettet ist und wie die Software mit den umgebenden Komponenten und Systemen zusammenspielt. Dazu werden die Schnittstellen, Kommunikationsprotokolle etc. definiert.
+ChatGPT 3.5-Turbo soll mittels API in Jabref eingebaut werden. 
 
 ### 2.2 Funktionen
 
-Skizziert die wichtigsten Funktionen
+Die Nutzer greifen auf die Funktionalität von Chat-GPT via GUI zu. 
+Es kann mittels eines Buttons ein Chat-window geöffnet werden, welches unterhaltsame gespräche mit ChatGPT ermöglicht. 
+Beim hinzüfügen eines Artikels soll ChatGPT automatisch den Abstract in einem Satz zusammenfassen.
 
 ### 2.3 Benutzerprofile
 
-Charakterisiert die Benutzergruppen und die Voraussetzungen die diese jeweils mitbringen (Ausbildung, Know-how, Sprache)
+Alle Jabref Benutzer unabhänging vom Erfahrungslevel. 
+Benutzer müssen sich mit der Englischen Sprache umgehen können
 
 ### 2.4 Einschränkungen
-Dokumentiert Einschränkungen, die die Freiheit der Entwicklung reduzieren (Basis-Software, Ziel-Hardware, Gesetzliche Grundlagen, ...)
+ür die Entwicklung ist JDK 18 und usere Erweiterung wird auf Englisch sein.
+- Die Erweiterung soll keine zusätzlichen Anforderungen an die Hardwarespezifikation erzeugen.
+- Die Erweiterung ist abhängig von der verwendeten ChatGPT API und der aktuellen ChatGPT Version. 
+Ausserdem ist sie abhängig vom gegebenen Abstract der einzelnen Einträge
 
 ### 2.5 Annahmen und Abhängigkeiten
-Nennt explizit die Annahmen und externen Voraussetzungen, von denen bei der Spezifikation ausgegangen wurde.
+???
 
 
 ## 3. Einzelanforderungen
@@ -90,42 +96,40 @@ Definieren Sie hier mindestens ein Abnahmekriterium
 
 ## Anhang A. Use-cases
 
+<<<<<<< HEAD
 An dieser Stelle können detaillierte Use-cases angegeben werden
 
 
+=======
+>>>>>>> 73e8313b14f3cabd874cacecce2358ef57dbfbf5
 ### Use Case 1:
-* Name: *Name des Use-cases*
-* Akteure: *Akteur1, Akteur2, ...*
-* Vorbedingungen: *Was muss vor Beginn des Ablaufs gelten*
+* Name: Durchschnittlicher User
+* Akteure: Otto Normal (O.N.)
+* Vorbedingungen: Otto Normal benutzt JabRef. Er hat kein Interesse daran, ChatGPT zu nutzen, sondern will JabRef 'normal' benutzen. Er möchte jedoch nicht jedes Mal den kompletten Abstract lesen müssen, um eine Vorstellung vom Inhalt des Artikels zu kriegen, aber trotzdem etwas mehr Informationen dazu erhalten, um einen Kurzüberblick über die Thematik des Artikels zu erlangen.
 * Standardablauf
-    * Schritt 1
-    * Schritt 2
-* Nachbedingungen Erfolg: *Was muss nach dem Ende des erfolgreichen Ablaufs gelten*
-* Nachbedingung Sonderfall: *Was gilt nach dem Ende, wenn der Ablauf fehlgeschlagen ist*
+    * O.N. startet JabRef
+    * O.N. wählt einen Eintrag in seiner Bibliothek aus
+    * O.N. klickt auf das "Summary" Tab (neben "Abstract" Tab)
+    * O.N. klickt auf den "summarize" Button (unten links, beim "Change entry type" Button)
+* Nachbedingungen Erfolg: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
+* Nachbedingung Sonderfall 1a: Das Feld ist leer.
+* Nachbedingung Sonderfall 1b: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
 
 
 #### Sonderfall 1a: Ausnahme 1
-* Ablauf Sonderfall 1a
-    * Schritt 1
-    * Schritt 2
-
+Wenn der Artikel keinen Abstract hat; beziehungsweise ein Eintrag ohne Abstract hinzugefügt wurde, bleibt das Feld leer (Analog zum "Abstract" Feld).
 #### Sonderfall 1b: Ausnahme 2
-* Ablauf Sonderfall 1b
-    * Schritt 1
-    * Schritt 2
-
+Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das "Summary" Tab klickt, erscheint ebenfalls die Zusammenfassung.
 
 ### Use Case 2:
-* Name: *Name des Use-cases*
-* Akteure: *Akteur1, Akteur2, ...*
-* Vorbedingungen: *Was muss vor Beginn des Ablaufs gelten*
+* Name: ChatGPT User
+* Akteure: Chatty
+* Vorbedingungen: Chatty benutzt JabRef. Beim Browsen seiner Bibliothek fällt ihm eine Frage ein, die er gerne von ChatGPT beantwortet hätte. Dafür möchte er nicht auf seinen Internetbrowser wechseln, sondern das in JabRef integrierte ChatWindow nutzen.
 * Standardablauf
-    * Schritt 1
-    * Schritt 2
-* Nachbedingungen Erfolg: *Was muss nach dem Ende des erfolgreichen Ablaufs gelten*
-* Nachbedingung Sonderfall: *Was gilt nach dem Ende, wenn der Ablauf fehlgeschlagen ist*
-
-#### Sonderfall 2a: Ausnahme 1
-* Ablauf Sonderfall 1a
-    * Schritt 1
-    * Schritt 2
+    * Chatty startet JabRef
+    * Chatty fällt eine Frage ein und möchte diese von ChatGPT beantwortet kriegen.
+    * Chatty klickt auf den "ChatGPT" Button oben rechts und ein Fenster öffnet sich.
+    * Chatty schreibt seine Frage in das Fenster und drückt die "Enter"-Taste.
+    * Chatty erhält eine Antwort von ChatGPT im Fenster.
+* Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
+* Nachbedingung Sonderfall: - ?
