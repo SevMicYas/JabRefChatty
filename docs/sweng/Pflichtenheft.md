@@ -107,17 +107,22 @@ Abhängigkeiten:
     * O.N. startet JabRef
     * O.N. Setzt seinen API-Schlüssel.
     * O.N. wählt einen Eintrag in seiner Bibliothek aus
-    * O.N. klickt auf das "Summary" Tab (neben "Abstract" Tab)
-    * O.N. klickt auf den "Summarize" Button (unten links, beim "Change entry type" Button)
+    * O.N. klickt auf das `Summary` Tab (neben "Abstract" Tab)
+    * O.N. klickt auf den `Summarize` Button (unten links, beim "Change entry type" Button)
 * Nachbedingungen Erfolg: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
 * Nachbedingung Sonderfall 1a: Das Feld ist leer.
 * Nachbedingung Sonderfall 1b: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
 
 
 #### Sonderfall 1a: Ausnahme 1
-Wenn der Artikel keinen Abstract hat; beziehungsweise ein Eintrag ohne Abstract hinzugefügt wurde, bleibt das Feld leer (Analog zum "Abstract" Feld).
+Wenn der Artikel keinen Abstract hat; beziehungsweise ein Eintrag ohne Abstract hinzugefügt wurde, steht im Feld "No Abstract provided" nach betätigung des `Summarize` buttons.
 #### Sonderfall 1b: Ausnahme 2
-Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das "Summary" Tab klickt, erscheint ebenfalls die Zusammenfassung.
+Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das `Summary` Tab klickt, erscheint ebenfalls die Zusammenfassung.
+#### Sonderfall 1c: Ausnahme 3
+Falls O.N. keinen API-key gesetzt hat, wird er mit einer Fehelermeldung gebeten, einen API-key zu setzen.
+#### Sonderfall 1d: Ausnahme 4
+Falls O.N. keine Internetverbindung hat, wird O.N. darauf hingewiesen.
+
 
 ### Use Case 2:
 * Name: ChatGPT User
@@ -131,6 +136,11 @@ Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf
     * Chatty erhält eine Antwort von ChatGPT im Fenster.
     * Chatty kopiert die Antwort, für spätere Benutzung, ins Clipboard indem er auf den `Copy` Button klickt.
 * Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
+
+#### Sonderfall 1a: Ausnahme 1
+Falls Chatty keinen API-key gesetzt hat, wird er mit einer Fehelermeldung gebeten, einen API-key zu setzen.
+#### Sonderfall 1b: Ausnahme 2
+Falls Chatty keine Internetverbindung hat, wird Chatty darauf hingewiesen.
 
 ### Use Case 3:
 * Name: Hans hinter dem Mond
