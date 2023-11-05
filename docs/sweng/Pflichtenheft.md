@@ -101,12 +101,13 @@ Abhängigkeiten:
 ### Use Case 1:
 * Name: Durchschnittlicher User
 * Akteure: Otto Normal (O.N.)
-* Vorbedingungen: Otto Normal benutzt JabRef. Er hat kein Interesse daran, ChatGPT zu nutzen, sondern will JabRef 'normal' benutzen. Er möchte jedoch nicht jedes Mal den kompletten Abstract lesen müssen, um eine Vorstellung vom Inhalt des Artikels zu kriegen, aber trotzdem etwas mehr Informationen dazu erhalten, um einen Kurzüberblick über die Thematik des Artikels zu erlangen.
+* Vorbedingungen: Otto Normal benutzt JabRef. Er hat kein Interesse daran, ChatGPT zu nutzen, sondern will JabRef 'normal' benutzen. Er möchte jedoch nicht jedes Mal den kompletten Abstract lesen müssen, um eine Vorstellung vom Inhalt des Artikels zu kriegen, aber trotzdem etwas mehr Informationen dazu erhalten, um einen Kurzüberblick über die Thematik des Artikels zu erlangen. Otto Normal benutzt die ChatGPT Funktionalität zum ersten Mal und hat somit noch keinen API-key hinterlegt.
 * Standardablauf
     * O.N. startet JabRef
-    * O.N. Setzt seinen API-Schlüssel.
     * O.N. wählt einen Eintrag in seiner Bibliothek aus
     * O.N. klickt auf das `Summary` Tab (neben "Abstract" Tab)
+    * Da O.N. noch keinen API-key hinterlegt hat, bekommt er eine Fehlermeldung, mit der Bitte einen API-key zu hinterlegen.
+    * O.N. hinterlegt seinen API-key über die Menüleiste.
     * O.N. klickt auf den `Summarize` Button (unten links, beim "Change entry type" Button)
 * Nachbedingungen Erfolg: O.N. liest die Zusammenfassung des Abstracts in einem Satz.
 * Nachbedingung Sonderfall 1a: Das Feld ist leer.
@@ -116,30 +117,21 @@ Abhängigkeiten:
 #### Sonderfall 1a: Ausnahme 1
 Wenn der Artikel keinen Abstract hat; beziehungsweise ein Eintrag ohne Abstract hinzugefügt wurde, steht im Feld "No Abstract provided" nach betätigung des `Summarize` buttons.
 #### Sonderfall 1b: Ausnahme 2
-Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das `Summary` Tab klickt, erscheint ebenfalls die Zusammenfassung.
-#### Sonderfall 1c: Ausnahme 3
-Falls O.N. keinen API-key gesetzt hat, wird er mit einer Fehelermeldung gebeten, einen API-key zu setzen.
-#### Sonderfall 1d: Ausnahme 4
-Falls O.N. keine Internetverbindung hat, wird O.N. darauf hingewiesen.
+Falls O.N. die Schritte (3) und (6) im obigen Ablauf vertauscht, also zuerst auf den "Refresh" Button und danach auf das `Summary` Tab klickt, erscheint ebenfalls die Zusammenfassung.
 
 
 ### Use Case 2:
 * Name: ChatGPT User
 * Akteure: Chatty
-* Vorbedingungen: Chatty benutzt JabRef. Beim Browsen seiner Bibliothek fällt ihm eine Frage ein, die er gerne von ChatGPT beantwortet hätte. Dafür möchte er nicht auf seinen Internetbrowser wechseln, sondern das in JabRef integrierte Chat-Window nutzen.
+* Vorbedingungen: Chatty benutzt JabRef. Beim Browsen seiner Bibliothek fällt ihm eine Frage ein, die er gerne von ChatGPT beantwortet hätte. Dafür möchte er nicht auf seinen Internetbrowser wechseln, sondern das in JabRef integrierte Chat-Window nutzen. Chatty benutzt die API-Funktionalität nicht zum ersten Mal, und hat deswegen bereits einen hinterlegten Key.
 * Standardablauf
     * Chatty startet JabRef
     * Chatty fällt eine Frage ein und möchte diese von ChatGPT beantwortet kriegen.
     * Chatty klickt auf den "Chatty" Button oben rechts und ein Fenster öffnet sich.
     * Chatty schreibt seine Frage in das Fenster und sendet seine Frage an ChatGPT.
     * Chatty erhält eine Antwort von ChatGPT im Fenster.
-    * Chatty kopiert die Antwort, für spätere Benutzung, ins Clipboard indem er auf den `Copy` Button klickt.
+    * Chatty kopiert die Antwort für spätere Benutzung, ins Clipboard indem er auf den `Copy` Button klickt.
 * Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
-
-#### Sonderfall 1a: Ausnahme 1
-Falls Chatty keinen API-key gesetzt hat, wird er mit einer Fehelermeldung gebeten, einen API-key zu setzen.
-#### Sonderfall 1b: Ausnahme 2
-Falls Chatty keine Internetverbindung hat, wird Chatty darauf hingewiesen.
 
 ### Use Case 3:
 * Name: Hans hinter dem Mond
