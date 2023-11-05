@@ -72,18 +72,20 @@ Abhängigkeiten:
 * /F10/ Es muss in der oberen Menuleiste unter Tools eine neue Option namens `Set API-key` geben.
 * /F11/ Bei Tätigung muss ein Fenster aufgehen, mit einem Text-input Feld. Der User kann dort seinen eigenen API-Schlüssel eingeben und mit `OK` bestätigen.
 * /F12/ Wenn kein API-Schlüssel angegeben wird, soll bei jedem Nutzungsversuch von den folgenden Funktionen (/F2X/ & /F3X/) eine Fehlernachricht kommen, welche den Benutzer (mit einer Anleitung) bittet, einen API-Schlüssel anzugeben.
-* /F13/ Der API-Schlüssel muss in einer Text-Datei lokal gespeichert werden.
-* /F14/ Der Benutzer soll jederzeit einen neuen API-Schlüssel angeben können.
-* /F15/ Der alte API-Schlüssel soll dabei überschrieben werden.
+* /F13/ Wenn keine aktive Interneverbindung vorhanden ist, soll bei jedem Nutzungsversuch von den folgenden Funktionen (/F2X/ & /F3X/) eine Fehlernachricht kommen, welche den Benutzer bittet, die Internetverbindung zu überprüfen.
+* /F14/ Der API-Schlüssel muss in einer Text-Datei lokal gespeichert werden und erhalten bleiben beim nächsten Start von JabRef.
+* /F15/ Der Benutzer soll jederzeit einen neuen API-Schlüssel angeben können.
+* /F16/ Der alte API-Schlüssel soll dabei überschrieben werden.
 * /F20/ Es muss ein Tab rechts von `Abstract` mit dem Namen "Summary" existieren. (Siehe Mockup)
 * /F21/ Links im unteren Feld, oberhalb vom `Change entry type` Button muss ein neuer Button namens "Summarize" erstellt werden. (Siehe Mockup)
 * /F22/ Beim Betätigen des Buttons `Summarize` soll der Abstract über die offizielle OpenAI API an ChatGPT geschickt werden, mit der Aufgabe den Abstract in einem Satz zusammenzufassen.
 * /F23/ Der Output des API-calls soll im Tab `Summary` dargestellt werden.
+* /F24/ Sofern kein Abstract vorhanden ist, soll bei Betätigung des `Summarize` Buttons im Text-feld "No Abstract provided" stehen.
 * /F30/ Oben rechts bei JabRef muss ein Button eingebettet werden mit der Aufschrift `Chatty`. (Siehe Grafik: GUI Mockup)
 * /F31/ Beim Klicken auf diesen Knopf muss sich ein Chat Fenster mit einem Textfeld öffnen.
-* /F32/ Man muss im Textfeld schreiben können und beim Klicken des `Send`-Buttons muss der Inhalt an ChatGPT geschickt werden.
+* /F32/ Man muss im Textfeld schreiben können und beim Klicken des `Send`-Buttons muss der Inhalt an ChatGPT geschickt werden. Das Textfeld ist nach dem Abschicken der Nachricht wieder leer
 * /F33/ Es soll eine Antwort von ChatGPT als Chat-Nachricht zurückgeschickt und angezeigt werden.
-* /F34/ ChatGPT soll den Kontext vom aktuellen Gespräch verstehen. Beim Schliessen vom Chat-Fenster geht der Kontext verloren.
+* /F34/ ChatGPT soll den Kontext vom aktuellen Gespräch verstehen. Beim Schliessen vom Chat-Fenster geht der Kontext sowie der Chat-Verlauf verloren.
 * /F35/ Es soll nur ein Chat-Fenster zum selben Zeitpunkt offen sein können.
 * /F36/ Oben rechts im Chat-Fenster soll ein Button eingebettet werden: `Copy`; wenn man diesen drückt soll die letzte Antwort von ChatGPT ins Clipboard kopiert werden.
 
@@ -127,6 +129,7 @@ Falls O.N. die Schritte (3) und (4) im obigen Ablauf vertauscht, also zuerst auf
     * Chatty klickt auf den "Chatty" Button oben rechts und ein Fenster öffnet sich.
     * Chatty schreibt seine Frage in das Fenster und sendet seine Frage an ChatGPT.
     * Chatty erhält eine Antwort von ChatGPT im Fenster.
+    * Chatty kopiert die Antwort, für spätere Benutzung, ins Clipboard indem er auf den `Copy` Button klickt.
 * Nachbedingungen Erfolg: Chatty hat die gewünschte Antwort von ChatGPT erhalten.
 
 ### Use Case 3:
