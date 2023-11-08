@@ -609,7 +609,7 @@ public class JabRefFrame extends BorderPane {
 
                 new HBox(
                         factory.createIconButton(StandardActions.OPEN_GITHUB, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService)),
-                        factory.createIconButton(StandardActions.OPEN_CHATTY, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService))));
+                        factory.createIconButton(StandardActions.OPEN_CHATTY, new OpenBrowserAction("https://chat.openai.com", dialogService))));
 
         leftSpacer.setPrefWidth(50);
         leftSpacer.setMinWidth(Region.USE_PREF_SIZE);
@@ -965,6 +965,7 @@ public class JabRefFrame extends BorderPane {
                         factory.createMenuItem(StandardActions.OPEN_FACEBOOK, new OpenBrowserAction("https://www.facebook.com/JabRef/", dialogService)),
                         factory.createMenuItem(StandardActions.OPEN_TWITTER, new OpenBrowserAction("https://twitter.com/jabref_org", dialogService)),
                         factory.createMenuItem(StandardActions.OPEN_GITHUB, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService)),
+                        factory.createMenuItem(StandardActions.OPEN_CHATTY, new OpenBrowserAction("https://chat.openai.com", dialogService)),
 
                         new SeparatorMenuItem(),
 
