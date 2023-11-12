@@ -6,7 +6,7 @@ title : Technische Dokumentation
 
 | Version | Projektname | Autor                          | Status | Datum      | Kommentar |
 |---------|-------------|--------------------------------| ------ |------------| --------- |
-| 1.1     | Chatty      | Michel M., Severin M., Yash T. | in Bearbeitung | 12.11.2023 | |
+| 1.1     | Chatty      | Michel R., Severin M., Yash T. | in Bearbeitung | 12.11.2023 | |
 
 
 # 1 Einführung
@@ -78,8 +78,5 @@ Zustandsdiagramm: (GPTInterface)
 
 ![Zustandsdiagramm](images/State.png)
 
-## 5.3 Logik
-
-An dieser Stelle können noch logische Aspekte, wie zum Beispiel logische Einschränkungen spezifiziert werden. Hierzu kann zum Beispiel OCL verwendet werden. 
 
 
