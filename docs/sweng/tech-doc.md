@@ -6,7 +6,7 @@ title : Technische Dokumentation
 
 | Version | Projektname | Autor                          | Status | Datum      | Kommentar |
 |---------|-------------|--------------------------------| ------ |------------| --------- |
-| 1.0     | Chatty      | Michel M., Severin M., Yash T. | in Bearbeitung | 12.11.2023 | |
+| 1.1     | Chatty      | Michel M., Severin M., Yash T. | in Bearbeitung | 12.11.2023 | |
 
 
 # 1 Einführung
@@ -60,11 +60,23 @@ In den weiteren Sektionen dieses Kapitels werden wir genauer auf diese Aspekte e
 
 ## 5.1 Statik
 
-An dieser Stelle sollten die statischen Aspekte, zum Beispiel mit Hilfe von UML Klassendiagrammen oder Paketdiagrammen beschrieben werden.
+Die statischen Aspekte stellen wir mithilfe eines UML Klassendiagramms dar: ![Klassendiagramm](images/Class.png)
 
 ## 5.2 Dynamik
 
-An dieser Stelle sollten die dynamische Aspekte, zum Beispiel mit Hilfe von UML Sequenz-, Aktivitäts- oder Zustandsdiagrammen spezifiziert werden.
+Für die Illustration der dynamischen Aspekte haben wir folgende Diagramme verwendet:
+
+Aktivitätsdiagramm: (ganzes System)
+
+![Aktivitätsdiagramm](images/Activity.drawio.png)
+
+Sequenzdiagramm: (Interaktion User, ChattyController, GPTInterface)
+
+![Sequenzdiagramm](images/Sequence.png)
+
+Zustandsdiagramm: (GPTInterface)
+
+![Zustandsdiagramm](images/State.png)
 
 ## 5.3 Logik
 
