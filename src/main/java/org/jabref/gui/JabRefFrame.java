@@ -55,6 +55,7 @@ import org.jabref.gui.actions.SimpleCommand;
 import org.jabref.gui.actions.StandardActions;
 import org.jabref.gui.auximport.NewSubLibraryAction;
 import org.jabref.gui.bibtexextractor.ExtractBibtexAction;
+import org.jabref.gui.chatty.ChattyAction;
 import org.jabref.gui.citationkeypattern.GenerateCitationKeyAction;
 import org.jabref.gui.cleanup.CleanupAction;
 import org.jabref.gui.contentselector.ManageContentSelectorAction;
@@ -609,7 +610,7 @@ public class JabRefFrame extends BorderPane {
 
                 new HBox(
                         factory.createIconButton(StandardActions.OPEN_GITHUB, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService)),
-                        factory.createIconButton(StandardActions.OPEN_CHATTY, new OpenBrowserAction("https://chat.openai.com", dialogService))));
+                        factory.createIconButton(StandardActions.OPEN_CHATTY, new ChattyAction())));
 
         leftSpacer.setPrefWidth(50);
         leftSpacer.setMinWidth(Region.USE_PREF_SIZE);
