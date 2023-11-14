@@ -121,6 +121,7 @@ import org.jabref.gui.util.DefaultTaskExecutor;
 import org.jabref.gui.util.TaskExecutor;
 import org.jabref.logic.autosaveandbackup.AutosaveManager;
 import org.jabref.logic.autosaveandbackup.BackupManager;
+import org.jabref.logic.chatgpt.APIKeyHandler;
 import org.jabref.logic.citationstyle.CitationStyleOutputFormat;
 import org.jabref.logic.help.HelpFile;
 import org.jabref.logic.importer.IdFetcher;
@@ -915,7 +916,9 @@ public class JabRefFrame extends BorderPane {
 
                 new SeparatorMenuItem(),
 
-                factory.createMenuItem(StandardActions.REBUILD_FULLTEXT_SEARCH_INDEX, new RebuildFulltextSearchIndexAction(stateManager, this::getCurrentLibraryTab, dialogService, prefs.getFilePreferences()))
+                factory.createMenuItem(StandardActions.REBUILD_FULLTEXT_SEARCH_INDEX, new RebuildFulltextSearchIndexAction(stateManager, this::getCurrentLibraryTab, dialogService, prefs.getFilePreferences())),
+
+                factory.createMenuItem( StandardActions.SET_API_KEY, new APIKeyHandler())
         );
         SidePaneType webSearchPane = SidePaneType.WEB_SEARCH;
         SidePaneType groupsPane = SidePaneType.GROUPS;

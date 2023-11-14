@@ -14,9 +14,8 @@ public class GPTinterface {
     public static String summarizeAbstract(String prompt) {
 
         String url = "https://api.openai.com/v1/chat/completions";
-        // String apiKey = "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";
-        // String model = "gpt-3.5-turbo";
         String task = "Summarize me the following text in one sentence: ";
+        apiKey = APIKeyHandler.getApiKey();
         prompt = task + prompt;
 
         try {
@@ -58,7 +57,7 @@ public class GPTinterface {
 
 
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
+        apiKey = APIKeyHandler.getApiKey();
         String model = "gpt-3.5-turbo";
 
 

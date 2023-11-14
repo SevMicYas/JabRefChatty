@@ -1,12 +1,20 @@
+package org.jabref.logic.chatgpt;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class APIKeyHandler {
+import javafx.scene.control.TextInputDialog;
+
+import org.jabref.gui.actions.SimpleCommand;
+
+public class APIKeyHandler extends SimpleCommand {
     private static final String API_KEY_FILE_PATH = "api-key.txt";
+
 
     // Method to get the API key from the file
     public static String getApiKey() {
@@ -25,10 +33,10 @@ public class APIKeyHandler {
     }
 
     // Method to set the API key in the file
-    public static void setApiKey(String apiKey) {
+    public static void setApiKey() {
         try {
             // Write the API key to the file, overwriting its previous content
-            Files.write(getFilePath(), Collections.singletonList(apiKey));
+            Files.write(getFilePath(), Collections.singletonList(""));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,5 +45,25 @@ public class APIKeyHandler {
     // Private helper method to get the file path
     private static Path getFilePath() {
         return Paths.get(API_KEY_FILE_PATH);
+    }
+
+    @Override
+    public void execute() {
+        TextInputDialog dialog = new TextInputDialog("xx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        dialog.setTitle("API-key");
+        dialog.setHeaderText("Please enter your ChatGPT API-key");
+        dialog.setContentText("API-key:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+           try{
+               System.out.println(getFilePath());
+               Files.write(getFilePath(), Collections.singletonList(result.get()));
+           }catch (IOException e){
+               e.printStackTrace();
+           }
+        }
+
+
     }
 }
