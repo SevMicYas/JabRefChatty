@@ -78,5 +78,22 @@ Zustandsdiagramm: (GPTInterface)
 
 ![Zustandsdiagramm](images/State.png)
 
+## 5.3 Logik
+
+Folgende logische Einschränkungen sind gegeben:
+
+Es kann nur ein API-Key für ChatGPT angegeben werden. Nach dem Setzen des API-Keys ist das Field non-empty.
+Der API-Key wird bei jedem Aufruf der Methoden GPTinterface.sendChatAndGetResponse() und GPTinterface.summarizeAbstract() neu geladen.
+Der API-Key wird immer von der ersten Zeile des api-key.txt Dokuments gelesen.
+
+Bei jedem Senden einer Nachricht an ChatGPT soll der Kontext um eine Nachricht ergänzt (länger) werden. 
+Ebenso bei jeder Antwort von der ChatGPT API. Der Kontext kann nicht kürzer werden; ausser wenn das Fenster geschlossen wird.
+Mit der von im Projekt verwendeten ChatGPT Version (3.5-Turbo) ist der Kontext auf 16'000 Zeichen beschränkt. Die Anzahl an Nachrichten im Kontext ist nicht-negativ.
+Nach dem Betätigen des `CopyToClipboard Buttons; stimmt der Inhalt des Clipboards mit der letzten Nachricht von ChatGPT überein.
+
+Ein leerer Abstract kann nicht zusammengefasst werden. Die Zusammenfassung des Abstracts ist kürzer, als der Abstract selber.
+
+
+
 
 

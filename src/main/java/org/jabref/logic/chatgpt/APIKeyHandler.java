@@ -32,15 +32,6 @@ public class APIKeyHandler extends SimpleCommand {
         return null; // Return null if there was an error or the file is empty
     }
 
-    // Method to set the API key in the file
-    public static void setApiKey() {
-        try {
-            // Write the API key to the file, overwriting its previous content
-            Files.write(getFilePath(), Collections.singletonList(""));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     // Private helper method to get the file path
     private static Path getFilePath() {
@@ -49,6 +40,7 @@ public class APIKeyHandler extends SimpleCommand {
 
     @Override
     public void execute() {
+        //Used to be setApiKey() was changed in order to work with @Override
         TextInputDialog dialog = new TextInputDialog("xx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         dialog.setTitle("API-key");
         dialog.setHeaderText("Please enter your ChatGPT API-key");
