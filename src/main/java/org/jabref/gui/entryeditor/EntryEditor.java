@@ -279,6 +279,8 @@ public class EntryEditor extends BorderPane {
 
         entryEditorTabs.add(new FulltextSearchResultsTab(stateManager, preferencesService, dialogService));
 
+        entryEditorTabs.add(new SummaryTab(databaseContext, preferencesService, taskExecutor, dialogService));
+
         return entryEditorTabs;
     }
 
