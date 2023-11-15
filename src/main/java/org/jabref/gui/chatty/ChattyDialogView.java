@@ -33,5 +33,6 @@ public class ChattyDialogView extends BaseDialog<Void> {
     @FXML
     private void initialize() {
         viewModel = new ChattyDialogViewModel(dialogService, clipBoardManager);
+        this.setResizable(true);
     }
 }
