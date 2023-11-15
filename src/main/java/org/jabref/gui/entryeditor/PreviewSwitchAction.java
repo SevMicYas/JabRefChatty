@@ -16,7 +16,6 @@ public class PreviewSwitchAction extends SimpleCommand {
     public PreviewSwitchAction(Direction direction, JabRefFrame frame, StateManager stateManager) {
         this.frame = frame;
         this.direction = direction;
-
         this.executable.bind(needsDatabase(stateManager));
     }
 
