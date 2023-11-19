@@ -74,7 +74,7 @@ Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Kl
 
 | Name der Klasse | Name des Testfalls     |
 |-----------------|------------------------|
-| APIKeyHandler   | getApiKey              |
+| APIKeyHandler   | getApiKeyNotNull              |
 | APIKeyHandler | isEqualApiKey          |
 | APIKeyHandler | isUpdated              |
 | GPTinterface | testAPIconnection      |
