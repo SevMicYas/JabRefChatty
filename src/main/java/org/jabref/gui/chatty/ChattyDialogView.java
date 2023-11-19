@@ -35,4 +35,14 @@ public class ChattyDialogView extends BaseDialog<Void> {
         viewModel = new ChattyDialogViewModel(dialogService, clipBoardManager);
         this.setResizable(true);
     }
+
+    @FXML
+    private void send() {
+        System.out.println("Send Button pressed");
+    }
+
+    @FXML
+    private void copyToClipboard() {
+        System.out.println("copy button pressed");
+    }
 }
