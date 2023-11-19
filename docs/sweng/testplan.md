@@ -58,7 +58,7 @@ Welche Aspekte werden explizit nicht getestet? Bitte begründen weshalb nicht.
 
 Unsere Erweiterung werden wir, wo immer möglich, mittels Unit-Tests testen. 
 Aufgrund der Natur unserer Erweiterung, die relativ GUI-zentrisch ist, werden wir für die GUI-Funktionen auch manuelle Tests durchführen.
-Die Unit-Tests sind im Abschnitt `6` näher beschrieben. Durch die relativ isolierte Natur unserer Erweiterung, sollte es bei der Integration in JabRef
+Die Unit-Tests sind im Abschnitt `6` näher beschrieben. Durch die relativ isolierte Natur unserer Erweiterung sollte es bei der Integration in JabRef
 keine grösseren Schwierigkeiten geben. Die Integration wird mit den eigenen Tests in Kombination mit den bestehenden JabRef Tests getestet.
 Durch unsere Erweiterung sollten keine Tests neu fehlschlagen, die vorher funktioniert haben.
 
@@ -80,12 +80,20 @@ Ausserdem muss die Testperson über eine aktive Internetverbindung verfügen und
 Ihre Module sollten wenn immer möglich über automatisierte Unittests getestet werden.
 Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Klassennamen und den Namen des Testfalls anschreiben.
 
-| Name der Klasse | Name des Testfalls |
-|-----------------|--------------------|
-|   Testklasse 1  |   Testfall 1       |
+| Name der Klasse | Name des Testfalls     |
+|-----------------|------------------------|
+| APIKeyHandler   | getApiKey              |
+| APIKeyHandler | isEqualApiKey          |
+| APIKeyHandler | isUpdated              |
+| GPTinterface | testAPIconnection      |
 
 
-Falls Sie ein Modul nicht automatisiert Testen können, müssen Sie den manuellen Testablauf nachfolgend beschreiben.
+
+Die Klassen `SummaryTab` und `SummaryTabViewModel` im package `org.jabref.gui.entryeditor`, die Klasse `AbstractSummaryAction` im package `org.jabref.gui.menus` 
+und die Klassen im package `org.jabref.gui.chatty`
+sind primär für das GUI verantwortlich und deshalb schwierig mit Unit-Tests zu testen. Wir werden für beide einerseits einen kleinen
+manuellen Test durchführen, um zu schauen, ob die GUI-Elemente wie gewünscht vorhanden sind und andererseits wird deren danach Funktion danach ausgiebig im Zusammenhang mit den Funktiostests getestet,
+da diese vom Zusammenspiel mit den Klassen im package `org.jabref.logic.chatgpt` abhängig sind.
 
 ##### Testfall: /TM10/
 *Testziel:*
@@ -97,6 +105,24 @@ Falls Sie ein Modul nicht automatisiert Testen können, müssen Sie den manuelle
 *Erwartete Ausgabe:*
 
 *Abhängigkeiten:*
+
+##### Testfall: /TM20/
+*Testziel:* Es sind alle GUI-Elemente für die Erweiterung `Summary` vorhanden.
+
+*Voraussetzung:* JabRef ist geöffnet via GUI. Es ist mind. 1 Entry in der Bibliothek vorhanden.
+
+*Eingabe:* Auf einen beliebigen Entry in der Bibliothek klicken.
+
+*Erwartete Ausgabe:* Der Button `Summarize` ist vorhanden, an der eingezeichneten Stelle im Mockup, ebenso wie das `Summary`-Tab.
+
+##### Testfall: /TM30/
+*Testziel:* Es sind alle GUI-Elemente für die Erweiterung `ChatGPT` vorhanden. (ChatWindow)
+
+*Voraussetzung:* JabRef ist geöffnet via GUI.
+
+*Eingabe:* Auf den Button `Chatty` klicken. (Location Siehe Mockup)
+
+*Erwartete Ausgabe:* Es sind alle relevanten Buttons und Felder aus dem Mockup vorhanden, sprich `Send`- und `Copy`-Buttons und ein Text-Input Feld.
 
 ### 6.2 Funktionstests
 
@@ -155,7 +181,15 @@ Die Nummerierung der Testfälle bezieht sich auf die Nummerierung der Einzelanfo
 
 *Abhängigkeiten:* Gültiger API-key vorhanden.
 
-##### Testfall: /TF15/ --> TODO --> Test via JUnit?! --> Spezifizieren
+##### Testfall: /TF15/
+
+*Testziel:* Der API-Schlüssel muss von einem Benutzer neu gesetzt werden können
+
+*Voraussetzung:* JabRef ist geöffnet via GUI.
+
+*Eingabe:* Option `Tools -> Set API-key` in der Menüleiste auswählen. Im auftauchenden Pop-Up den API-key im Textfeld eintragen und dann auf `OK` klicken. Option `Tools -> Set API-key` in der Menüleiste auswählen. Im auftauchenden Pop-Up einen *anderen* API-key im Textfeld eintragen und dann auf `OK` klicken. 
+
+*Erwartete Ausgabe:* In der lokalen Textdatei namens "api-key.txt" soll der zweite API-key stehen. 
 
 ##### Testfall: /TF20/
 *Testziel:* Es muss ein Tab rechts von `Abstract` mit dem Namen "Summary" existieren. (Siehe Mockup Pflichtenheft)
@@ -233,16 +267,16 @@ Die Nummerierung der Testfälle bezieht sich auf die Nummerierung der Einzelanfo
 
 *Erwartete Ausgabe:* Es erscheint eine Antwort von ChatGPT als Nachricht unter der von einem selbst eingegebenen Nachricht (Siehe /TF32/).
 
-##### Testfall: /TF34/ --> TODO --> Wie testen???
+##### Testfall: /TF34/
 *Testziel:* ChatGPT soll den Kontext vom aktuellen Gespräch verstehen. Beim Schliessen vom Chat-Fenster geht der Kontext sowie der Chat-Verlauf verloren.
 
-*Voraussetzung:* 
+*Voraussetzung:* JabRef ist geöffnet via GUI. Es existiert eine aktive Internetverbindung. Es ist ein gültiger API-key hinterlegt. Es ist bereits ein ChatWindow geöffnet.
 
-*Eingabe:*
+*Eingabe:* Schreiben des Textes: "Say Tomato". Klicken auf `Send`-Button. Schreiben des Textes: "What was the last thing you said?". Klicken auf `Send`-Button.
 
-*Erwartete Ausgabe:*
+*Erwartete Ausgabe:* Es kommt als erstes die Antwort "Tomato". Und als Antwort auf die zweite Nachricht erscheint eine Antwort, die das Wort "Tomato" enthält.
 
-*Abhängigkeiten:*
+*Abhängigkeiten:* Die zweite Antwort kann variieren abhängig von der verwendeten ChatGPT Version. Es sollte aber klar ersichtlich sein, dass der Kontext funktioniert.
 
 ##### Testfall: /TF35/
 *Testziel:* Es soll nur ein Chat-Fenster zum selben Zeitpunkt offen sein können.
