@@ -15,7 +15,6 @@ import org.jabref.gui.actions.SimpleCommand;
 public class APIKeyHandler extends SimpleCommand {
     private static final String API_KEY_FILE_PATH = "api-key.txt";
 
-
     // Method to get the API key from the file
     public static String getApiKey() {
         try {
@@ -32,7 +31,6 @@ public class APIKeyHandler extends SimpleCommand {
         return null; // Return null if there was an error or the file is empty
     }
 
-
     // Private helper method to get the file path
     private static Path getFilePath() {
         return Paths.get(API_KEY_FILE_PATH);
@@ -40,22 +38,21 @@ public class APIKeyHandler extends SimpleCommand {
 
     @Override
     public void execute() {
-        //Used to be setApiKey() was changed in order to work with @Override
+        // Used to be setApiKey() was changed in order to work with @Override
         TextInputDialog dialog = new TextInputDialog("xx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         dialog.setTitle("API-key");
         dialog.setHeaderText("Please enter your ChatGPT API-key");
         dialog.setContentText("API-key:");
 
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
-           try{
-               System.out.println(getFilePath());
-               Files.write(getFilePath(), Collections.singletonList(result.get()));
-           }catch (IOException e){
-               e.printStackTrace();
-           }
+        if (result.isPresent()) {
+            try {
+                System.out.println(getFilePath());
+                Files.write(getFilePath(), Collections.singletonList(result.get()));
+            } catch (
+                    IOException e) {
+                e.printStackTrace();
+            }
         }
-
-
     }
 }
