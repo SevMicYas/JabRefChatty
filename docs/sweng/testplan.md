@@ -6,7 +6,7 @@ title : Woche 6
 
 | Version | Projektname | Autor                          | Status | Datum      | Kommentar |
 |---------|-------------|--------------------------------| ------ |------------| --------- |
-| 1.0     | Chatty      | Severin M., Yash T., Michel R. | in Bearbeitung | 19.11.2023 | |
+| 1.1     | Chatty      | Severin M., Yash T., Michel R. | in Bearbeitung | 19.11.2023 | |
 
 
 # 1. Einführung
@@ -46,12 +46,6 @@ Für weitere Informationen, Siehe Dokumente unter Abschnitt `1.2`.
 Es sollen alle im [Pflichtenheft](https://github.com/smemmishofer/jabref/blob/requirements/docs/sweng/Pflichtenheft.md)
 spezifizierten funktionalen Anforderungen getestet werden.
 
-### 3.2 Nicht zu testende Merkmale (Features / Funktionen)
-
-Welche Aspekte werden explizit nicht getestet? Bitte begründen weshalb nicht.
-
-## TODO!!!
-
 ## 4 Vorgehensweise
 
 ### 4.1 Modul und Integrationstests
@@ -75,8 +69,6 @@ Ausserdem muss die Testperson über eine aktive Internetverbindung verfügen und
 
 ### 6.1 Modultests
 
-## TODO!!!
-
 Ihre Module sollten wenn immer möglich über automatisierte Unittests getestet werden.
 Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Klassennamen und den Namen des Testfalls anschreiben.
 
@@ -88,23 +80,11 @@ Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Kl
 | GPTinterface | testAPIconnection      |
 
 
-
 Die Klassen `SummaryTab` und `SummaryTabViewModel` im package `org.jabref.gui.entryeditor`, die Klasse `AbstractSummaryAction` im package `org.jabref.gui.menus` 
 und die Klassen im package `org.jabref.gui.chatty`
 sind primär für das GUI verantwortlich und deshalb schwierig mit Unit-Tests zu testen. Wir werden für beide einerseits einen kleinen
 manuellen Test durchführen, um zu schauen, ob die GUI-Elemente wie gewünscht vorhanden sind und andererseits wird deren danach Funktion danach ausgiebig im Zusammenhang mit den Funktiostests getestet,
 da diese vom Zusammenspiel mit den Klassen im package `org.jabref.logic.chatgpt` abhängig sind.
-
-##### Testfall: /TM10/
-*Testziel:*
-
-*Voraussetzung:*
-
-*Eingabe:*
-
-*Erwartete Ausgabe:*
-
-*Abhängigkeiten:*
 
 ##### Testfall: /TM20/
 *Testziel:* Es sind alle GUI-Elemente für die Erweiterung `Summary` vorhanden.
