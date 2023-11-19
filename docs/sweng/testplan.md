@@ -82,7 +82,7 @@ Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Kl
 
 | Name der Klasse | Name des Testfalls     |
 |-----------------|------------------------|
-| APIKeyHandler   | getApiKey              |
+| APIKeyHandler   | getApiKeyNotNull              |
 | APIKeyHandler | isEqualApiKey          |
 | APIKeyHandler | isUpdated              |
 | GPTinterface | testAPIconnection      |
@@ -95,16 +95,6 @@ sind primär für das GUI verantwortlich und deshalb schwierig mit Unit-Tests zu
 manuellen Test durchführen, um zu schauen, ob die GUI-Elemente wie gewünscht vorhanden sind und andererseits wird deren danach Funktion danach ausgiebig im Zusammenhang mit den Funktiostests getestet,
 da diese vom Zusammenspiel mit den Klassen im package `org.jabref.logic.chatgpt` abhängig sind.
 
-##### Testfall: /TM10/
-*Testziel:*
-
-*Voraussetzung:*
-
-*Eingabe:*
-
-*Erwartete Ausgabe:*
-
-*Abhängigkeiten:*
 
 ##### Testfall: /TM20/
 *Testziel:* Es sind alle GUI-Elemente für die Erweiterung `Summary` vorhanden.
