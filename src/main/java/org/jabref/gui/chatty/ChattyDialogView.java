@@ -1,5 +1,6 @@
 package org.jabref.gui.chatty;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -44,10 +45,20 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private void send() {
         String message = chatField.getText();
         chatField.clear();
-        String response = GPTinterface.sendChatAndGetResponse(message);
-        System.out.println("Response: " + response);
+        System.out.println("test");
+
+        new Thread(() -> {
+            sendToBackend(message);
+        }).start();
+
         // TODO: Add message to context
         // TODO: Display messages in GUI!!
+    }
+
+    private String sendToBackend(String input) {
+        String response = GPTinterface.sendChatAndGetResponse(input);
+        System.out.println("Response: " + response);
+        return response;
     }
 
     @FXML
