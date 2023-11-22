@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import org.jabref.gui.ClipBoardManager;
 import org.jabref.gui.DialogService;
 import org.jabref.gui.util.BaseDialog;
@@ -22,6 +24,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     @Inject private ClipBoardManager clipBoardManager;
 
     private ChattyDialogViewModel viewModel;
+    private String lastMessage;
 
     public ChattyDialogView() {
         this.setTitle(Localization.lang("Chatty"));
@@ -46,9 +49,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
         String message = chatField.getText();
         chatField.clear();
         System.out.println("test");
-
+        message = replaceDoubleQuotes(message);
+        String finalMessage = message;
         new Thread(() -> {
-            sendToBackend(message);
+            sendToBackend(finalMessage);
         }).start();
 
         // TODO: Add message to context
@@ -57,12 +61,20 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     private String sendToBackend(String input) {
         String response = GPTinterface.sendChatAndGetResponse(input);
+        lastMessage = response;
         System.out.println("Response: " + response);
         return response;
     }
 
+    private static String replaceDoubleQuotes(String input) {
+        return input.replace("\"", "\\\"");
+    }
+
     @FXML
     private void copyToClipboard() {
-        System.out.println("copy button pressed");
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent clipboardContent = new ClipboardContent();
+        clipboardContent.putString(lastMessage);
+        clipboard.setContent(clipboardContent);
     }
 }
