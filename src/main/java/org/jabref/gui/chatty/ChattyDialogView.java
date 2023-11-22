@@ -1,11 +1,13 @@
 package org.jabref.gui.chatty;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 import org.jabref.gui.ClipBoardManager;
 import org.jabref.gui.DialogService;
-import org.jabref.gui.help.AboutDialogViewModel;
 import org.jabref.gui.util.BaseDialog;
+import org.jabref.logic.chatgpt.GPTinterface;
+import org.jabref.logic.cleanup.EprintCleanup;
 import org.jabref.logic.l10n.Localization;
 
 import com.airhacks.afterburner.views.ViewLoader;
@@ -13,6 +15,8 @@ import jakarta.inject.Inject;
 
 public class ChattyDialogView extends BaseDialog<Void> {
 
+    @FXML
+    private TextField chatField;
     @Inject private DialogService dialogService;
     @Inject private ClipBoardManager clipBoardManager;
 
@@ -38,7 +42,11 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     @FXML
     private void send() {
-        System.out.println("Send Button pressed");
+        String message = chatField.getText();
+        chatField.clear();
+        String response = GPTinterface.sendChatAndGetResponse(message);
+        System.out.println("Response: " + response);
+        // TODO: Add message to context
     }
 
     @FXML

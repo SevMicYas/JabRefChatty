@@ -22,7 +22,7 @@
                         <AnchorPane prefHeight="67.0" prefWidth="600.0">
                             <children>
                                 <Button layoutX="540.0" layoutY="13.0" mnemonicParsing="false" onAction="#send" text="Send" AnchorPane.bottomAnchor="13.5" AnchorPane.rightAnchor="14.5" AnchorPane.topAnchor="13.0" />
-                                <TextField layoutX="14.0" layoutY="8.0" prefHeight="37.0" prefWidth="479.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="8.0" />
+                                <TextField fx:id="chatField" layoutX="14.0" layoutY="8.0" prefHeight="37.0" prefWidth="479.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="8.0" />
                             </children>
                         </AnchorPane>
                     </children>

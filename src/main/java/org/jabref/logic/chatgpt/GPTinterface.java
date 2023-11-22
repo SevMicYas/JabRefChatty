@@ -9,8 +9,8 @@ import java.net.URL;
 
 public class GPTinterface {
 
-    public static String apiKey;
     public static String model = "gpt-3.5-turbo";
+    private static String apiKey;
     public static String summarizeAbstract(String prompt) {
 
         String url = "https://api.openai.com/v1/chat/completions";
@@ -52,14 +52,11 @@ public class GPTinterface {
         }
     }
 
-
-    public static String sendChatAndGetResponse(String prompt){
-
+    public static String sendChatAndGetResponse(String prompt) {
 
         String url = "https://api.openai.com/v1/chat/completions";
         apiKey = APIKeyHandler.getApiKey();
         String model = "gpt-3.5-turbo";
-
 
         try {
             URL obj = new URL(url);
@@ -93,7 +90,6 @@ public class GPTinterface {
                 IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public static String extractMessageFromJSONResponse(String response) {
