@@ -47,6 +47,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
         String response = GPTinterface.sendChatAndGetResponse(message);
         System.out.println("Response: " + response);
         // TODO: Add message to context
+        // TODO: Display messages in GUI!!
     }
 
     @FXML
