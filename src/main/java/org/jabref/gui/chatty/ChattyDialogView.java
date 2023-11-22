@@ -26,6 +26,8 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private ChattyDialogViewModel viewModel;
     private String lastMessage;
 
+    private String context;
+
     public ChattyDialogView() {
         this.setTitle(Localization.lang("Chatty"));
 
@@ -48,21 +50,17 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private void send() {
         String message = chatField.getText();
         chatField.clear();
-        System.out.println("test");
-        message = replaceDoubleQuotes(message);
-        String finalMessage = message;
-        new Thread(() -> {
-            sendToBackend(finalMessage);
-        }).start();
-
+        String finalMessage = replaceDoubleQuotes(message);
         // TODO: Add message to context
+        new Thread(() -> {
+            System.out.println(sendToBackend(finalMessage));
+        }).start();
         // TODO: Display messages in GUI!!
     }
 
     private String sendToBackend(String input) {
         String response = GPTinterface.sendChatAndGetResponse(input);
         lastMessage = response;
-        System.out.println("Response: " + response);
         return response;
     }
 
