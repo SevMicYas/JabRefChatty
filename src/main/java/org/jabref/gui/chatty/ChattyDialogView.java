@@ -1,6 +1,5 @@
 package org.jabref.gui.chatty;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -10,7 +9,6 @@ import org.jabref.gui.ClipBoardManager;
 import org.jabref.gui.DialogService;
 import org.jabref.gui.util.BaseDialog;
 import org.jabref.logic.chatgpt.GPTinterface;
-import org.jabref.logic.cleanup.EprintCleanup;
 import org.jabref.logic.l10n.Localization;
 
 import com.airhacks.afterburner.views.ViewLoader;
@@ -26,7 +24,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private ChattyDialogViewModel viewModel;
     private String lastMessage;
 
-    private String context;
+    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}";
+
+    StringBuilder resultBuilder = new StringBuilder();
+
 
     public ChattyDialogView() {
         this.setTitle(Localization.lang("Chatty"));
@@ -44,16 +45,21 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private void initialize() {
         viewModel = new ChattyDialogViewModel(dialogService, clipBoardManager);
         this.setResizable(true);
+        resultBuilder.append(systemRole);
     }
 
     @FXML
     private void send() {
         String message = chatField.getText();
         chatField.clear();
-        String finalMessage = replaceDoubleQuotes(message);
+        String outMessage = replaceSpecialChars(message);
+        outMessage = userMsgFormater(outMessage);
         // TODO: Add message to context
+        String finalOutMessage = outMessage;
         new Thread(() -> {
-            System.out.println(sendToBackend(finalMessage));
+            String response = sendToBackend(finalOutMessage);
+            chattyMsgFormater(response);
+            System.out.println(response);
         }).start();
         // TODO: Display messages in GUI!!
     }
@@ -64,8 +70,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
         return response;
     }
 
-    private static String replaceDoubleQuotes(String input) {
-        return input.replace("\"", "\\\"");
+    private static String replaceSpecialChars(String input) {
+        input = input.replace("\\", "\\\\");
+        input = input.replace("\"", "\\\"");
+        return input;
     }
 
     @FXML
@@ -75,4 +83,15 @@ public class ChattyDialogView extends BaseDialog<Void> {
         clipboardContent.putString(lastMessage);
         clipboard.setContent(clipboardContent);
     }
+
+    private String userMsgFormater(String input){
+        resultBuilder.append(",\n{\"role\": \"user\", \"content\": \"" + input + "\"}");
+        return resultBuilder.toString();
+    }
+
+    private String chattyMsgFormater(String input){
+        resultBuilder.append(",\n{\"role\": \"assistant\", \"content\": \"" + input + "\"}");
+        return resultBuilder.toString();
+    }
 }
+

@@ -11,6 +11,7 @@ public class GPTinterface {
 
     public static String model = "gpt-3.5-turbo";
     private static String apiKey;
+
     public static String summarizeAbstract(String prompt) {
 
         String url = "https://api.openai.com/v1/chat/completions";
@@ -66,7 +67,7 @@ public class GPTinterface {
             connection.setRequestProperty("Content-Type", "application/json");
 
             // The request body
-            String body = "{\"model\": \"" + model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}]}";
+            String body = "{\"model\": \"" + model + "\", \"messages\": [" + prompt +"]}";
             connection.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
             writer.write(body);
