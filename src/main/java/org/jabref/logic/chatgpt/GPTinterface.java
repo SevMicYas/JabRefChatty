@@ -13,7 +13,6 @@ public class GPTinterface {
     private static String apiKey;
 
     public static String summarizeAbstract(String prompt) {
-
         String url = "https://api.openai.com/v1/chat/completions";
         String task = "Summarize me the following text in one sentence: ";
         apiKey = APIKeyHandler.getApiKey();
@@ -54,7 +53,6 @@ public class GPTinterface {
     }
 
     public static String sendChatAndGetResponse(String prompt) {
-
         String url = "https://api.openai.com/v1/chat/completions";
         apiKey = APIKeyHandler.getApiKey();
         String model = "gpt-3.5-turbo";

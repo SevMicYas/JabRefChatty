@@ -1,10 +1,20 @@
 package org.jabref.gui.chatty;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 import org.jabref.gui.ClipBoardManager;
 import org.jabref.gui.DialogService;
 import org.jabref.gui.util.BaseDialog;
@@ -18,6 +28,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     @FXML
     private TextField chatField;
+    @FXML
+    private VBox chat = new VBox();
+    @FXML
+    private ScrollPane scrollPane;
     @Inject private DialogService dialogService;
     @Inject private ClipBoardManager clipBoardManager;
 
@@ -26,8 +40,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}";
 
-    StringBuilder resultBuilder = new StringBuilder();
-
+    private StringBuilder resultBuilder = new StringBuilder();
 
     public ChattyDialogView() {
         this.setTitle(Localization.lang("Chatty"));
@@ -46,11 +59,16 @@ public class ChattyDialogView extends BaseDialog<Void> {
         viewModel = new ChattyDialogViewModel(dialogService, clipBoardManager);
         this.setResizable(true);
         resultBuilder.append(systemRole);
+
+        // To scroll auotomatically to the bottom if new Chat messages come...
+        chat.heightProperty().addListener(
+                (observable, oldValue, newValue) -> scrollPane.setVvalue((Double) newValue));
     }
 
     @FXML
     private void send() {
         String message = chatField.getText();
+        displayQuestion(message);
         chatField.clear();
         String outMessage = replaceSpecialChars(message);
         outMessage = userMsgFormater(outMessage);
@@ -59,9 +77,34 @@ public class ChattyDialogView extends BaseDialog<Void> {
         new Thread(() -> {
             String response = sendToBackend(finalOutMessage);
             chattyMsgFormater(response);
+            displayResponse(response);
             System.out.println(response);
         }).start();
         // TODO: Display messages in GUI!!
+    }
+
+    private void displayQuestion(String msg) {
+        Text text = new Text("You: " + msg);
+        text.setFont(Font.font("Arial", 20));
+        TextFlow textFlow = new TextFlow(text);
+        textFlow.setStyle("-fx-background-color: #99ccff; -fx-padding: 5px;");
+        HBox hbox = new HBox(textFlow);
+        hbox.setAlignment(Pos.CENTER_RIGHT);
+        hbox.setPadding(new Insets(10, 10, 10, 30));
+        hbox.setStyle(" -fx-border-radius:20px;");
+        Platform.runLater(() -> chat.getChildren().add(hbox));
+    }
+
+    private void displayResponse(String msg) {
+        Text text = new Text("ChatGPT: " + msg);
+        text.setFont(Font.font("Arial", 20));
+        TextFlow textFlow = new TextFlow(text);
+        textFlow.setStyle("-fx-background-color: #ccffcc; -fx-padding: 5px;");
+        HBox hbox = new HBox(textFlow);
+        hbox.setAlignment(Pos.CENTER_LEFT);
+        hbox.setPadding(new Insets(10, 30, 10, 10));
+        hbox.setStyle(" -fx-border-radius:20px;");
+        Platform.runLater(() -> chat.getChildren().add(hbox));
     }
 
     private String sendToBackend(String input) {
@@ -84,12 +127,12 @@ public class ChattyDialogView extends BaseDialog<Void> {
         clipboard.setContent(clipboardContent);
     }
 
-    private String userMsgFormater(String input){
+    private String userMsgFormater(String input) {
         resultBuilder.append(",\n{\"role\": \"user\", \"content\": \"" + input + "\"}");
         return resultBuilder.toString();
     }
 
-    private String chattyMsgFormater(String input){
+    private String chattyMsgFormater(String input) {
         resultBuilder.append(",\n{\"role\": \"assistant\", \"content\": \"" + input + "\"}");
         return resultBuilder.toString();
     }
