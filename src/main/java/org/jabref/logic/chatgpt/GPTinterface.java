@@ -65,7 +65,7 @@ public class GPTinterface {
             connection.setRequestProperty("Content-Type", "application/json");
 
             // The request body
-            String body = "{\"model\": \"" + model + "\", \"messages\": [" + prompt +"]}";
+            String body = "{\"model\": \"" + model + "\", \"messages\": [" + prompt + "]}";
             connection.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
             writer.write(body);
@@ -92,10 +92,10 @@ public class GPTinterface {
     }
 
     public static String extractMessageFromJSONResponse(String response) {
-        int start = response.indexOf("content") + 11;
+        response = response.replace("\\\\", "\\");
+        response = response.replace("\\\"", "\"");
+        response = response.replace("\\\n", "\n");
 
-        int end = response.indexOf("\"", start);
-
-        return response.substring(start, end);
+        return response;
     }
 }

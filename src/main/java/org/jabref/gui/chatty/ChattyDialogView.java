@@ -44,6 +44,11 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     public ChattyDialogView() {
         this.setTitle(Localization.lang("Chatty"));
+        this.setOnCloseRequest(dialogEvent -> {
+            resultBuilder.setLength(0);
+            resultBuilder.append(systemRole);
+            chat.getChildren().clear();
+        });
 
         ViewLoader.view(this)
                   .load()
@@ -72,7 +77,6 @@ public class ChattyDialogView extends BaseDialog<Void> {
         chatField.clear();
         String outMessage = replaceSpecialChars(message);
         outMessage = userMsgFormater(outMessage);
-        // TODO: Add message to context
         String finalOutMessage = outMessage;
         new Thread(() -> {
             String response = sendToBackend(finalOutMessage);
@@ -80,18 +84,16 @@ public class ChattyDialogView extends BaseDialog<Void> {
             displayResponse(response);
             System.out.println(response);
         }).start();
-        // TODO: Display messages in GUI!!
     }
 
     private void displayQuestion(String msg) {
         Text text = new Text("You: " + msg);
         text.setFont(Font.font("Arial", 20));
         TextFlow textFlow = new TextFlow(text);
-        textFlow.setStyle("-fx-background-color: #99ccff; -fx-padding: 5px;");
+        textFlow.setStyle("-fx-background-color: #99ccff; -fx-padding: 5px; -fx-background-radius: 10px;");
         HBox hbox = new HBox(textFlow);
         hbox.setAlignment(Pos.CENTER_RIGHT);
         hbox.setPadding(new Insets(10, 10, 10, 30));
-        hbox.setStyle(" -fx-border-radius:20px;");
         Platform.runLater(() -> chat.getChildren().add(hbox));
     }
 
@@ -99,11 +101,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
         Text text = new Text("ChatGPT: " + msg);
         text.setFont(Font.font("Arial", 20));
         TextFlow textFlow = new TextFlow(text);
-        textFlow.setStyle("-fx-background-color: #ccffcc; -fx-padding: 5px;");
+        textFlow.setStyle("-fx-background-color: #ccffcc; -fx-padding: 5px; -fx-background-radius: 10px;");
         HBox hbox = new HBox(textFlow);
         hbox.setAlignment(Pos.CENTER_LEFT);
         hbox.setPadding(new Insets(10, 30, 10, 10));
-        hbox.setStyle(" -fx-border-radius:20px;");
         Platform.runLater(() -> chat.getChildren().add(hbox));
     }
 

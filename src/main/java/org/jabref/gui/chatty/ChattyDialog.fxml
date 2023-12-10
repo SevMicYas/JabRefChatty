@@ -21,7 +21,7 @@
                         </AnchorPane>
                         <ScrollPane fx:id="scrollPane" prefHeight="311.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox fx:id="chat" prefWidth="578.0" />
+                        <VBox fx:id="chat" prefWidth="565.0" />
                      </content>
                         </ScrollPane>
                         <AnchorPane prefHeight="67.0" prefWidth="600.0">
