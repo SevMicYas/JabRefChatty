@@ -68,7 +68,7 @@
             <!--
                 new button
             -->
-            <Button styleClass="icon-button,narrow" onAction="#deleteEntry">
+            <Button styleClass="icon-button,narrow" onAction="#showAbstractSummary">
                 <graphic>
                     <JabRefIconView glyph="DELETE_ENTRY"/>
                 </graphic>

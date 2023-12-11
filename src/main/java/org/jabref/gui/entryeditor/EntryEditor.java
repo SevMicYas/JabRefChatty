@@ -221,6 +221,11 @@ public class EntryEditor extends BorderPane {
     }
 
     @FXML
+    private void showAbstractSummary() {
+        System.out.println("=== TRIED TO SUMMARIZE ABSTRACT ===");
+    }
+
+    @FXML
     void generateCiteKeyButton() {
         GenerateCitationKeySingleAction action = new GenerateCitationKeySingleAction(getEntry(), databaseContext,
                 dialogService, preferencesService, undoManager);
