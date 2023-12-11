@@ -101,8 +101,7 @@ public class GPTinterface {
 
     private static String responseFormatter(String response) {
         response = response.replace("\\\n", " ");
-        //response = response.replace("", " ");
-        response = response.replace("\\\n\\\n", " ");
+        response = response.replace("\\n\\n", " ");
         response = response.replace("\\\\", "\\");
         response = response.replace("\\\"", "\"");
 
