@@ -38,7 +38,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private ChattyDialogViewModel viewModel;
     private String lastMessage;
 
-    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}";
+    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful sarcastic assistant.\"}";
 
     private StringBuilder resultBuilder = new StringBuilder();
 
