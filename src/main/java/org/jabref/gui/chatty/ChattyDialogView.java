@@ -38,7 +38,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private ChattyDialogViewModel viewModel;
     private String lastMessage;
 
-    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}";
+    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful sarcastic assistant called Chatty.\"}";
 
     private StringBuilder resultBuilder = new StringBuilder();
 
@@ -99,7 +99,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     }
 
     private void displayResponse(String msg) {
-        Text text = new Text("ChatGPT: " + msg);
+        Text text = new Text("Chatty: " + msg);
         text.setFont(Font.font("Arial", 20));
         TextFlow textFlow = new TextFlow(text);
         textFlow.setStyle("-fx-background-color: #ccffcc; -fx-padding: 5px; -fx-background-radius: 10px;");
