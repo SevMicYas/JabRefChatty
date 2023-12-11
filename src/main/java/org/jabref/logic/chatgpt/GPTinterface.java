@@ -92,7 +92,6 @@ public class GPTinterface {
     }
 
     public static String extractMessageFromJSONResponse(String response) {
-        System.out.println(response);
         int start = response.indexOf("content") + 11;
 
         int end = response.indexOf("finish_reason", start) - 16;
@@ -101,9 +100,12 @@ public class GPTinterface {
     }
 
     private static String responseFormatter(String response) {
+        response = response.replace("\\\n", "\n");
+        response = response.replace("\n", " ");
+        response = response.replace("\n\n", " ");
         response = response.replace("\\\\", "\\");
         response = response.replace("\\\"", "\"");
-        response = response.replace("\\\n", "\n");
+
 
         return response;
     }

@@ -134,6 +134,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     }
 
     private String chattyMsgFormater(String input) {
+        input = replaceSpecialChars(input);
         resultBuilder.append(",\n{\"role\": \"assistant\", \"content\": \"" + input + "\"}");
         return resultBuilder.toString();
     }
