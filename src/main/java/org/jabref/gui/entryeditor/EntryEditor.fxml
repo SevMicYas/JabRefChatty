@@ -70,7 +70,7 @@
             -->
             <Button styleClass="icon-button,narrow" onAction="#showAbstractSummary">
                 <graphic>
-                    <JabRefIconView glyph="CLEANUP_ENTRIES"/>
+                    <JabRefIconView glyph="SUMMARY"/>
                 </graphic>
                 <tooltip>
                     <Tooltip text="Summarize Abstract"/>
