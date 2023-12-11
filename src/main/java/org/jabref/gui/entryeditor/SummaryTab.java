@@ -1,6 +1,7 @@
 package org.jabref.gui.entryeditor;
 
 import com.tobiasdiez.easybind.EasyBind;
+import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -69,9 +70,11 @@ public class SummaryTab extends EntryEditorTab {
             });
     }
 
-    public void updateSearchPane(String newAbstract) {
-        searchPane.getChildren().clear();
-        searchPane.add(getErrorPane(EntryEditor.getSummarizedAbstract()), 0, 0);
+    public void updateSearchPane() {
+        Platform.runLater(() -> {
+            searchPane.getChildren().clear();
+            searchPane.add(getErrorPane(EntryEditor.getSummarizedAbstract()), 0, 0);
+        });
     }
 
     public static VBox getErrorPane(String newAbstract) {
