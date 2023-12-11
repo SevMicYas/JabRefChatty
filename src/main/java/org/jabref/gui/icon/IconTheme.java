@@ -162,6 +162,7 @@ public class IconTheme {
 
     public enum JabRefIcons implements JabRefIcon {
 
+        SUMMARY(MaterialDesignC.COG_CLOCKWISE),
         ADD(MaterialDesignP.PLUS_CIRCLE_OUTLINE),
         ADD_FILLED(MaterialDesignP.PLUS_CIRCLE),
         ADD_NOBOX(MaterialDesignP.PLUS),
@@ -258,6 +259,7 @@ public class IconTheme {
         INTEGRITY_WARN(MaterialDesignA.ALERT_CIRCLE),
         INTEGRITY_SUCCESS(MaterialDesignC.CHECKBOX_MARKED_CIRCLE_OUTLINE),
         GITHUB(MaterialDesignG.GITHUB),
+        CHATTY(MaterialDesignC.CHAT),
         TOGGLE_ENTRY_PREVIEW(MaterialDesignL.LIBRARY),
         TOGGLE_GROUPS(MaterialDesignV.VIEW_LIST),
         SHOW_PREFERENCES_LIST(MaterialDesignV.VIEW_LIST),
