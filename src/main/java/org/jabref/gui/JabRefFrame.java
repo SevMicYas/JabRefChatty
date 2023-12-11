@@ -919,7 +919,7 @@ public class JabRefFrame extends BorderPane {
                 new SeparatorMenuItem(),
 
                 factory.createMenuItem(StandardActions.REBUILD_FULLTEXT_SEARCH_INDEX, new RebuildFulltextSearchIndexAction(stateManager, this::getCurrentLibraryTab, dialogService, prefs.getFilePreferences())),
-
+                new SeparatorMenuItem(),
                 factory.createMenuItem( StandardActions.SET_API_KEY, new APIKeyHandler())
         );
         SidePaneType webSearchPane = SidePaneType.WEB_SEARCH;
