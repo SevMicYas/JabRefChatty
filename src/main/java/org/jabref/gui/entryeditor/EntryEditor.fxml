@@ -70,10 +70,10 @@
             -->
             <Button styleClass="icon-button,narrow" onAction="#showAbstractSummary">
                 <graphic>
-                    <JabRefIconView glyph="DELETE_ENTRY"/>
+                    <JabRefIconView glyph="CLEANUP_ENTRIES"/>
                 </graphic>
                 <tooltip>
-                    <Tooltip text="%Delete entry"/>
+                    <Tooltip text="Summarize Abstract"/>
                 </tooltip>
             </Button>
 

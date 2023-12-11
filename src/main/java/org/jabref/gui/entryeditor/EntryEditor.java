@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
 
+import jakarta.activation.DataContentHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Side;
 import javafx.scene.control.Button;
@@ -43,10 +44,13 @@ import org.jabref.gui.undo.CountingUndoManager;
 import org.jabref.gui.util.DefaultTaskExecutor;
 import org.jabref.gui.util.TaskExecutor;
 import org.jabref.logic.TypedBibEntry;
+import org.jabref.logic.chatgpt.GPTinterface;
 import org.jabref.logic.help.HelpFile;
 import org.jabref.logic.importer.EntryBasedFetcher;
 import org.jabref.logic.importer.WebFetchers;
 import org.jabref.logic.importer.fileformat.PdfMergeMetadataImporter;
+import org.jabref.logic.importer.fileformat.endnote.Abstract;
+import org.jabref.logic.importer.fileformat.medline.AbstractText;
 import org.jabref.logic.journals.JournalAbbreviationRepository;
 import org.jabref.model.database.BibDatabaseContext;
 import org.jabref.model.entry.BibEntry;
@@ -62,6 +66,9 @@ import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  * GUI component that allows editing of the fields of a BibEntry (i.e. the one that shows up, when you double click on
  * an entry in the table)
@@ -110,6 +117,8 @@ public class EntryEditor extends BorderPane {
     @Inject private JournalAbbreviationRepository journalAbbreviationRepository;
 
     private final List<EntryEditorTab> entryEditorTabs = new LinkedList<>();
+
+    public static String summarizedAbstact = "No summary found";
 
     public EntryEditor(LibraryTab libraryTab) {
         this.libraryTab = libraryTab;
@@ -223,8 +232,37 @@ public class EntryEditor extends BorderPane {
     @FXML
     private void showAbstractSummary() {
         System.out.println("=== TRIED TO SUMMARIZE ABSTRACT ===");
+        if (this.entry.getFields().contains(StandardField.ABSTRACT)) {
+            System.out.println("This entry contains an abstract");
+            summarizedAbstact = GPTinterface.summarizeAbstract(this.entry.getField(StandardField.ABSTRACT).get().toString());
+            System.out.println(summarizedAbstact);
+        } else {
+            System.out.println("This entry has no abstract");
+        }
+        System.out.println("\n \n"+summarizedAbstact + "\n \n");
+        System.out.println(extractAbstract(this.databaseContext.getEntries().toString()));
+        SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(5);
+        summaryTab.updateSearchPane(summarizedAbstact);
     }
+    private static String extractAbstract(String bibTexEntry) {
+        // Define a regular expression to match the abstract field and extract its content
+        String abstractRegex = "abstract\\s*=\\s*\\{([^}]*)\\}";
 
+        Pattern pattern = Pattern.compile(abstractRegex);
+        Matcher matcher = pattern.matcher(bibTexEntry);
+
+        // Check if the abstract field is found
+        if (matcher.find()) {
+            // Group 1 contains the content of the abstract field
+            return matcher.group(1);
+        } else {
+            return "Abstract not found";
+        }
+    }
+    public static String getSummarizedAbstract(){
+
+        return summarizedAbstact;
+    }
     @FXML
     void generateCiteKeyButton() {
         GenerateCitationKeySingleAction action = new GenerateCitationKeySingleAction(getEntry(), databaseContext,
