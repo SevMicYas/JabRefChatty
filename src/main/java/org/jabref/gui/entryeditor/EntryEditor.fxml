@@ -64,6 +64,19 @@
                     <Tooltip text="%Delete entry"/>
                 </tooltip>
             </Button>
+
+            <!--
+                new button
+            -->
+            <Button styleClass="icon-button,narrow" onAction="#deleteEntry">
+                <graphic>
+                    <JabRefIconView glyph="DELETE_ENTRY"/>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="%Delete entry"/>
+                </tooltip>
+            </Button>
+
             <Separator/>
             <Button styleClass="icon-buttonNoSpaceBottom,narrow" onAction="#navigateToPreviousEntry">
                 <graphic>
