@@ -254,6 +254,9 @@ public class EntryEditor extends BorderPane {
         entryEditorTabs.add(new OptionalFields2Tab(databaseContext, libraryTab.getSuggestionProviders(), undoManager, dialogService, preferencesService, stateManager, themeManager, libraryTab.getIndexingTaskManager(), bibEntryTypesManager, taskExecutor, journalAbbreviationRepository));
         entryEditorTabs.add(new DeprecatedFieldsTab(databaseContext, libraryTab.getSuggestionProviders(), undoManager, dialogService, preferencesService, stateManager, themeManager, libraryTab.getIndexingTaskManager(), bibEntryTypesManager, taskExecutor, journalAbbreviationRepository));
 
+        // Summary tab
+        entryEditorTabs.add(new SummaryTab(databaseContext, preferencesService, taskExecutor, dialogService));
+
         // Other fields
         entryEditorTabs.add(new OtherFieldsTab(databaseContext, libraryTab.getSuggestionProviders(), undoManager, dialogService, preferencesService, stateManager, themeManager, libraryTab.getIndexingTaskManager(), bibEntryTypesManager, taskExecutor, journalAbbreviationRepository));
 
@@ -279,10 +282,14 @@ public class EntryEditor extends BorderPane {
                 keyBindingRepository);
         entryEditorTabs.add(sourceTab);
 
+
+
         // LaTeX citations tab
         entryEditorTabs.add(new LatexCitationsTab(databaseContext, preferencesService, taskExecutor, dialogService));
 
         entryEditorTabs.add(new FulltextSearchResultsTab(stateManager, preferencesService, dialogService));
+
+
 
         return entryEditorTabs;
     }
