@@ -232,19 +232,24 @@ public class EntryEditor extends BorderPane {
 
     @FXML
     private void showAbstractSummary() {
-        System.out.println("=== TRIED TO SUMMARIZE ABSTRACT ===");
-        if (this.entry.getFields().contains(StandardField.ABSTRACT)) {
-            System.out.println("This entry contains an abstract");
-            summarizedAbstact = GPTinterface.summarizeAbstract(this.entry.getField(StandardField.ABSTRACT).get().toString());
-            System.out.println(summarizedAbstact);
-        } else {
-            System.out.println("This entry has no abstract");
-        }
-        System.out.println("\n \n"+summarizedAbstact + "\n \n");
-        System.out.println(extractAbstract(this.databaseContext.getEntries().toString()));
-        SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(5);
-        summaryTab.updateSearchPane(summarizedAbstact);
+        new Thread(() -> {
+            System.out.println("=== TRIED TO SUMMARIZE ABSTRACT ===");
+            if (this.entry.getFields().contains(StandardField.ABSTRACT)) {
+                System.out.println("This entry contains an ab");
+                summarizedAbstact = replaceSpecialChars(this.entry.getField(StandardField.ABSTRACT).get().toString());
+                summarizedAbstact = GPTinterface.summarizeAbstract(summarizedAbstact);
+                System.out.println(summarizedAbstact);
+            } else {
+                System.out.println("This entry has no abstract");
+                summarizedAbstact = "This entry has no abstract";
+            }
+            System.out.println("\n \n"+summarizedAbstact + "\n \n");
+            System.out.println(extractAbstract(this.databaseContext.getEntries().toString()));
+            SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(5);
+            summaryTab.updateSearchPane();
+        }).start();
     }
+
     private static String extractAbstract(String bibTexEntry) {
         // Define a regular expression to match the abstract field and extract its content
         String abstractRegex = "abstract\\s*=\\s*\\{([^}]*)\\}";
@@ -259,6 +264,16 @@ public class EntryEditor extends BorderPane {
         } else {
             return "Abstract not found";
         }
+    }
+
+    private static String replaceSpecialChars(String input) {
+        System.out.println("Before replacing special chars: " + input);
+        input = input.replace("\\", "\\\\");
+        input = input.replace("\"", "\\\"");
+        input = input.replace("\n", "\\n");
+
+        System.out.println("After replacing special chars: " + input);
+        return input;
     }
     public static String getSummarizedAbstract(){
 
