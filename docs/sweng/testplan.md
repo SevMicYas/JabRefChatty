@@ -77,7 +77,7 @@ Diese können Sie hier kurz (tabellarisch) auflisten. Es reicht, wenn Sie den Kl
 | APIKeyHandler   | getApiKeyNotNull              |
 | APIKeyHandler | isEqualApiKey          |
 | APIKeyHandler | isUpdated              |
-| GPTinterface | testAPIconnection      |
+| GPTinterface | GptApiTest      |
 
 
 Die Klassen `SummaryTab` und `SummaryTabViewModel` im package `org.jabref.gui.entryeditor`, die Klasse `AbstractSummaryAction` im package `org.jabref.gui.menus` 
