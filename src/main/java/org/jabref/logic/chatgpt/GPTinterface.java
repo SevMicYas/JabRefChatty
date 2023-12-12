@@ -53,7 +53,7 @@ public class GPTinterface {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
                         "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
-            } else if (e.getMessage().contains("api.openai.com")) {
+            } else if (e.getMessage().contains("api.openai.com") || e.getMessage().contains("Network is unreachable")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
                         "Please check your internet connection.\n \n" +
                         " " + e);
@@ -104,7 +104,7 @@ public class GPTinterface {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
                         "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
-            } else if (e.getMessage().contains("api.openai.com")) {
+            } else if (e.getMessage().contains("api.openai.com") || e.getMessage().contains("Network is unreachable")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
                         "Please check your internet connection.\n \n" +
                         " " + e);
