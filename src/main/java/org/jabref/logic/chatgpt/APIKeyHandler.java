@@ -47,7 +47,6 @@ public class APIKeyHandler extends SimpleCommand {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             try {
-                System.out.println(getFilePath());
                 Files.write(getFilePath(), Collections.singletonList(result.get()));
             } catch (
                     IOException e) {
