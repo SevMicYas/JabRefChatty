@@ -18,45 +18,45 @@ public class APIKeyHandlerTests {
     private static Path getFilePath() {
         return Paths.get(API_KEY_FILE_PATH);
     }
+
     @BeforeEach
-    void setup(){
+    void setup() {
         setApiKey();
     }
+
     @Test
-    void getApiKeyNotNull(){
+    void getApiKeyNotNull() {
         String testResult = APIKeyHandler.getApiKey();
         assertNotNull(testResult);
     }
 
     @Test
-    void isEqualApiKey(){
+    void isEqualApiKey() {
         String testResult = APIKeyHandler.getApiKey();
         assertEquals("FirstTestApiKey", testResult);
     }
 
     @Test
-    void isUpdated(){
+    void isUpdated() {
         String firstKey = APIKeyHandler.getApiKey();
         setApiKey("SecondApiKey");
         String secondKey = APIKeyHandler.getApiKey();
         assertNotEquals(firstKey, secondKey);
-
     }
 
-    void setApiKey(String key){
+    void setApiKey(String key) {
         try {
             Files.write(getFilePath(), Collections.singletonList(key));
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    void setApiKey(){
+    void setApiKey() {
         try {
             Files.write(getFilePath(), Collections.singletonList("FirstTestApiKey"));
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }

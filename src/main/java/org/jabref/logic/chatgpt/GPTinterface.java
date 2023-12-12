@@ -79,7 +79,6 @@ public class GPTinterface {
             String body = "{\"model\": \"" + model + "\", \"messages\": [" + prompt + "]}";
             connection.setDoOutput(true);
             OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-            System.out.println("String being sent to ChatGPT: " + body);
             writer.write(body);
             writer.flush();
             writer.close();
@@ -94,8 +93,6 @@ public class GPTinterface {
                 response.append(line);
             }
             br.close();
-
-            System.out.println("String coming back from ChatGPT: " + response);
 
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
@@ -123,14 +120,9 @@ public class GPTinterface {
     }
 
     private static String responseFormatter(String response) {
-        System.out.println("Response before formatting: " + response);
-        // response = response.replace("\\\\n", "\\n");
-        // response = response.replace("\n", " ");
-        // response = response.replace("\\n\\n", "\\n");
         response = response.replace("\\\\", "\\");
         response = response.replace("\\\"", "\"");
         response = response.replace("\\n", "\n");
-        System.out.println("Response after formatting: " + response);
         return response;
     }
 }

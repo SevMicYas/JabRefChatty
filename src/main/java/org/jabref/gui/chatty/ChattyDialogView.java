@@ -38,7 +38,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
     private ChattyDialogViewModel viewModel;
     private String lastMessage;
 
-    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful sarcastic assistant called Chatty.\"}";
+    private String systemRole = "{\"role\": \"system\", \"content\": \"You are a helpful assistant called Chatty.\"}";
 
     private StringBuilder resultBuilder = new StringBuilder();
 
@@ -81,9 +81,7 @@ public class ChattyDialogView extends BaseDialog<Void> {
         new Thread(() -> {
             String response = sendToBackend(finalOutMessage);
             chattyMsgFormater(response);
-            // displayResponse("This is a message with a newline.\nAnother line.");
             displayResponse(response);
-            System.out.println("Response: " + response);
         }).start();
     }
 
@@ -116,12 +114,10 @@ public class ChattyDialogView extends BaseDialog<Void> {
     }
 
     private static String replaceSpecialChars(String input) {
-        System.out.println("Before replacing special chars: " + input);
         input = input.replace("\\", "\\\\");
         input = input.replace("\"", "\\\"");
         input = input.replace("\n", "\\n");
 
-        System.out.println("After replacing special chars: " + input);
         return input;
     }
 
@@ -140,7 +136,6 @@ public class ChattyDialogView extends BaseDialog<Void> {
 
     private String chattyMsgFormater(String input) {
         input = replaceSpecialChars(input);
-        System.out.println("String being appended to context: " + input);
         resultBuilder.append(",\n{\"role\": \"assistant\", \"content\": \"" + input + "\"}");
         return resultBuilder.toString();
     }

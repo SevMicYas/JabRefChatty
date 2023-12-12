@@ -1,9 +1,6 @@
 package org.jabref.logic.chatgpt;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,9 +16,8 @@ public class GPTinterfaceTest {
             if (errorMessage.contains("401")) {
                 assertEquals("Correct ErrorCode", "Correct ErrorCode");
             } else {
-                assertEquals("Correct ErrorCode", "Falese ErrorCode");
+                assertEquals("Correct ErrorCode", "False ErrorCode");
             }
         }
-
     }
 }

@@ -6,8 +6,6 @@ public abstract class AbstractAutomaticFieldEditorTabView extends AnchorPane imp
 
     @Override
     public AnchorPane getContent() {
-        System.out.println(this);
         return this;
-
     }
 }

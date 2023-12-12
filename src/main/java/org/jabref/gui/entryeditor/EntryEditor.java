@@ -79,6 +79,7 @@ import java.util.regex.Pattern;
  * EntryEditor also registers itself to the event bus, receiving events whenever a field of the entry changes, enabling
  * the text fields to update themselves if the change is made from somewhere else.
  */
+
 public class EntryEditor extends BorderPane {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EntryEditor.class);
@@ -233,18 +234,12 @@ public class EntryEditor extends BorderPane {
     @FXML
     private void showAbstractSummary() {
         new Thread(() -> {
-            System.out.println("=== TRIED TO SUMMARIZE ABSTRACT ===");
             if (this.entry.getFields().contains(StandardField.ABSTRACT)) {
-                System.out.println("This entry contains an ab");
                 summarizedAbstact = replaceSpecialChars(this.entry.getField(StandardField.ABSTRACT).get().toString());
                 summarizedAbstact = GPTinterface.summarizeAbstract(summarizedAbstact);
-                System.out.println(summarizedAbstact);
             } else {
-                System.out.println("This entry has no abstract");
-                summarizedAbstact = "This entry has no abstract";
+                summarizedAbstact = "No Abstract provided";
             }
-            System.out.println("\n \n"+summarizedAbstact + "\n \n");
-            System.out.println(extractAbstract(this.databaseContext.getEntries().toString()));
             SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(8);
             summaryTab.updateSearchPane();
         }).start();
@@ -267,18 +262,17 @@ public class EntryEditor extends BorderPane {
     }
 
     private static String replaceSpecialChars(String input) {
-        System.out.println("Before replacing special chars: " + input);
         input = input.replace("\\", "\\\\");
         input = input.replace("\"", "\\\"");
         input = input.replace("\n", "\\n");
 
-        System.out.println("After replacing special chars: " + input);
         return input;
     }
-    public static String getSummarizedAbstract(){
 
+    public static String getSummarizedAbstract() {
         return summarizedAbstact;
     }
+
     @FXML
     void generateCiteKeyButton() {
         GenerateCitationKeySingleAction action = new GenerateCitationKeySingleAction(getEntry(), databaseContext,
@@ -311,11 +305,11 @@ public class EntryEditor extends BorderPane {
         // Other fields
         entryEditorTabs.add(new OtherFieldsTab(databaseContext, libraryTab.getSuggestionProviders(), undoManager, dialogService, preferencesService, stateManager, themeManager, libraryTab.getIndexingTaskManager(), bibEntryTypesManager, taskExecutor, journalAbbreviationRepository));
 
-        int i=0;
+        int i = 0;
         // General fields from preferences
         for (Map.Entry<String, Set<Field>> tab : entryEditorPreferences.getEntryEditorTabList().entrySet()) {
             i++;
-            if(i==3) {
+            if (i == 3) {
                 // Summary tab
                 entryEditorTabs.add(new SummaryTab(databaseContext, preferencesService, taskExecutor, dialogService));
                 entryEditorTabs.add(new UserDefinedFieldsTab(tab.getKey(), tab.getValue(), databaseContext, libraryTab.getSuggestionProviders(), undoManager, dialogService, preferencesService, stateManager, themeManager, libraryTab.getIndexingTaskManager(), taskExecutor, journalAbbreviationRepository));
@@ -341,14 +335,10 @@ public class EntryEditor extends BorderPane {
                 keyBindingRepository);
         entryEditorTabs.add(sourceTab);
 
-
-
         // LaTeX citations tab
         entryEditorTabs.add(new LatexCitationsTab(databaseContext, preferencesService, taskExecutor, dialogService));
 
         entryEditorTabs.add(new FulltextSearchResultsTab(stateManager, preferencesService, dialogService));
-
-
 
         return entryEditorTabs;
     }
