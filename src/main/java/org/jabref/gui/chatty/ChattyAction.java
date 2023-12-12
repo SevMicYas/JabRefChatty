@@ -15,6 +15,6 @@ public class ChattyAction extends SimpleCommand {
     @Override
     public void execute() {
         DialogService dialogService = Injector.instantiateModelOrService(DialogService.class);
-        dialogService.showCustomDialog(chattyDialogView);
+        dialogService.showCustomDialogAndWait(chattyDialogView);
     }
 }

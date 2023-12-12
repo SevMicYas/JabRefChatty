@@ -151,6 +151,7 @@ import com.tobiasdiez.easybind.Subscription;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.TaskProgressView;
 import org.fxmisc.richtext.CodeArea;
+import org.jsoup.select.CombiningEvaluator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -609,9 +610,11 @@ public class JabRefFrame extends BorderPane {
 
                 new Separator(Orientation.VERTICAL),
 
-                new HBox(
-                        factory.createIconButton(StandardActions.OPEN_GITHUB, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService)),
-                        factory.createIconButton(StandardActions.OPEN_CHATTY, new ChattyAction())));
+                new HBox(factory.createIconButton(StandardActions.OPEN_CHATTY, new ChattyAction())),
+
+                new Separator(Orientation.VERTICAL),
+
+                new HBox(factory.createIconButton(StandardActions.OPEN_GITHUB, new OpenBrowserAction("https://github.com/JabRef/jabref", dialogService))));
 
         leftSpacer.setPrefWidth(50);
         leftSpacer.setMinWidth(Region.USE_PREF_SIZE);
@@ -919,7 +922,7 @@ public class JabRefFrame extends BorderPane {
                 new SeparatorMenuItem(),
 
                 factory.createMenuItem(StandardActions.REBUILD_FULLTEXT_SEARCH_INDEX, new RebuildFulltextSearchIndexAction(stateManager, this::getCurrentLibraryTab, dialogService, prefs.getFilePreferences())),
-
+                new SeparatorMenuItem(),
                 factory.createMenuItem( StandardActions.SET_API_KEY, new APIKeyHandler())
         );
         SidePaneType webSearchPane = SidePaneType.WEB_SEARCH;
