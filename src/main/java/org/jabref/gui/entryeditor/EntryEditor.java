@@ -245,7 +245,7 @@ public class EntryEditor extends BorderPane {
             }
             System.out.println("\n \n"+summarizedAbstact + "\n \n");
             System.out.println(extractAbstract(this.databaseContext.getEntries().toString()));
-            SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(5);
+            SummaryTab summaryTab = (SummaryTab) entryEditorTabs.get(8);
             summaryTab.updateSearchPane();
         }).start();
     }
