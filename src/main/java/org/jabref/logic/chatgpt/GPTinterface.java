@@ -49,17 +49,18 @@ public class GPTinterface {
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
         } catch (IOException e) {
-            if (e.getMessage().contains("401")){
+            if (e.getMessage().contains("401")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
                         "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
-            } else {
+            } else if (e.getMessage().contains("api.openai.com")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
                         "Please check your internet connection.\n \n" +
                         " " + e);
+            } else {
+                throw new RuntimeException("Uh-Oh: Something went wrong \n \n" + e);
             }
         }
-
     }
 
     public static String sendChatAndGetResponse(String prompt) {
@@ -99,17 +100,18 @@ public class GPTinterface {
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
         } catch (IOException e) {
-            if (e.getMessage().contains("401")){
+            if (e.getMessage().contains("401")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
                         "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
-            } else {
+            } else if (e.getMessage().contains("api.openai.com")) {
                 throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
                         "Please check your internet connection.\n \n" +
                         " " + e);
+            } else {
+                throw new RuntimeException("Uh-Oh: Something went wrong \n \n" + e);
             }
         }
-
     }
 
     public static String extractMessageFromJSONResponse(String response) {
