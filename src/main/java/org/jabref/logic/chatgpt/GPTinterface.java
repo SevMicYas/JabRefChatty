@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 public class GPTinterface {
 
@@ -46,9 +48,20 @@ public class GPTinterface {
 
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            if (e instanceof java.net.SocketException) {
+                // Check if it's a socket exception (likely no internet connection)
+                throw new RuntimeException("Uh-oh: Please check your internet connection.\n" +
+                        " " + e);
+            } else {
+                if (e.getMessage().contains("401")) {
+                    throw new RuntimeException("Uh-oh: Please check your API-key.\n" +
+                            "Set your API-key under 'tools'->'set API-key'.\n" +
+                            " " + e);
+                }
+            }
+            throw new RuntimeException("Uh-oh: Something unexpected happened.\n" +
+                    " " + e);
         }
     }
 
@@ -88,9 +101,19 @@ public class GPTinterface {
 
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            if (e instanceof java.net.SocketException) {
+                throw new RuntimeException("Uh-oh: Please check your internet connection.\n" +
+                        " " + e);
+            } else {
+                if (e.getMessage().contains("401")) {
+                    throw new RuntimeException("Uh-oh: Please check your API-key.\n" +
+                            "Set your API-key under 'tools'->'set API-key'.\n" +
+                            " " + e);
+                }
+            }
+            throw new RuntimeException("Uh-oh: Something unexpected happened.\n" +
+                    " " + e);
         }
     }
 
