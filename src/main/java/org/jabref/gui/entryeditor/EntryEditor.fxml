@@ -31,7 +31,19 @@
                     </tooltip>
                 </Label>
             </Group>
+
+            <!--
+                new button
+            -->
             <Pane prefHeight="10" VBox.vgrow="ALWAYS"/>
+            <Button styleClass="icon-button,narrow" onAction="#showAbstractSummary">
+                <graphic>
+                    <JabRefIconView glyph="SUMMARY"/>
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Summarize Abstract"/>
+                </tooltip>
+            </Button>
             <Button fx:id="typeChangeButton" styleClass="icon-button,narrow">
                 <graphic>
                     <JabRefIconView glyph="ENTRY_TYPE"/>
@@ -64,19 +76,6 @@
                     <Tooltip text="%Delete entry"/>
                 </tooltip>
             </Button>
-
-            <!--
-                new button
-            -->
-            <Button styleClass="icon-button,narrow" onAction="#showAbstractSummary">
-                <graphic>
-                    <JabRefIconView glyph="SUMMARY"/>
-                </graphic>
-                <tooltip>
-                    <Tooltip text="Summarize Abstract"/>
-                </tooltip>
-            </Button>
-
             <Separator/>
             <Button styleClass="icon-buttonNoSpaceBottom,narrow" onAction="#navigateToPreviousEntry">
                 <graphic>
