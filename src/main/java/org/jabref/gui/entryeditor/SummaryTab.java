@@ -35,9 +35,9 @@ public class SummaryTab extends EntryEditorTab {
         this.progressIndicator = new ProgressIndicator();
         this.citationsDisplay = new CitationsDisplay();
 
-        setText(Localization.lang("Abstract summary"));
-        setTooltip(new Tooltip(Localization.lang("Random gibberish")));
-        setGraphic(IconTheme.JabRefIcons.LATEX_CITATIONS.getGraphicNode());
+        setText(Localization.lang("Summary"));
+        setTooltip(new Tooltip(Localization.lang("abstract summary")));
+        setGraphic(IconTheme.JabRefIcons.SUMMARY.getGraphicNode());
         setSearchPane();
     }
 
