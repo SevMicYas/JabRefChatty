@@ -49,20 +49,17 @@ public class GPTinterface {
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
         } catch (IOException e) {
-            if (e instanceof java.net.SocketException) {
-                // Check if it's a socket exception (likely no internet connection)
-                throw new RuntimeException("Uh-oh: Please check your internet connection.\n" +
+            if (e.getMessage().contains("401")){
+                throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
+                        "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
             } else {
-                if (e.getMessage().contains("401")) {
-                    throw new RuntimeException("Uh-oh: Please check your API-key.\n" +
-                            "Set your API-key under 'tools'->'set API-key'.\n" +
-                            " " + e);
-                }
+                throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
+                        "Please check your internet connection.\n \n" +
+                        " " + e);
             }
-            throw new RuntimeException("Uh-oh: Something unexpected happened.\n" +
-                    " " + e);
         }
+
     }
 
     public static String sendChatAndGetResponse(String prompt) {
@@ -102,19 +99,17 @@ public class GPTinterface {
             // calls the method to extract the message.
             return extractMessageFromJSONResponse(response.toString());
         } catch (IOException e) {
-            if (e instanceof java.net.SocketException) {
-                throw new RuntimeException("Uh-oh: Please check your internet connection.\n" +
+            if (e.getMessage().contains("401")){
+                throw new RuntimeException("Uh-Oh: Something went wrong with your API-key. \n" +
+                        "Please set a functioning key under 'tools' -> 'set API-key'. \n \n" +
                         " " + e);
             } else {
-                if (e.getMessage().contains("401")) {
-                    throw new RuntimeException("Uh-oh: Please check your API-key.\n" +
-                            "Set your API-key under 'tools'->'set API-key'.\n" +
-                            " " + e);
-                }
+                throw new RuntimeException("Uh-Oh: Something went wrong with your internet connection. \n" +
+                        "Please check your internet connection.\n \n" +
+                        " " + e);
             }
-            throw new RuntimeException("Uh-oh: Something unexpected happened.\n" +
-                    " " + e);
         }
+
     }
 
     public static String extractMessageFromJSONResponse(String response) {
