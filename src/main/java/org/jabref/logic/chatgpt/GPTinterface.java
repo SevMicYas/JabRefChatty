@@ -114,7 +114,8 @@ public class GPTinterface {
     public static String extractMessageFromJSONResponse(String response) {
         int start = response.indexOf("content") + 11;
 
-        int end = response.indexOf("finish_reason", start) - 16;
+        int end = response.indexOf("finish_reason", start) - 39;
+        System.out.println(responseFormatter(response.substring(start, end)));
 
         return responseFormatter(response.substring(start, end));
     }
